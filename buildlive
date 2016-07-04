@@ -1,0 +1,69 @@
+#!/bin/bash
+
+set -e
+
+DISTROLIST=()
+ROOTPATH=
+DEVNAME=
+
+. functions.sh
+
+msg() {
+	echo -e "$1" >&2
+}
+
+errmsg() {
+	msg "\x1b[1;31m$1\x1b[0m"
+}
+
+usage() {
+	msg "$0 --root=<rootpath> --dev=<devname> [distro 1] [distro 2] ..."
+}
+
+while [[ -n "$1" ]]
+do
+	case "$1" in
+		--root=*)
+			ROOTPATH=${1/--root=}
+			msg "Files will be copy to $ROOTPATH"
+			;;
+		--dev=*)
+			DEVNAME=${1/--dev=}
+			msg "Boot sector will be written to $DEVNAME"
+			;;
+		*=*)
+			usage
+			exit 1
+			;;
+		*)
+			if [ -d "distro/$1" ]
+			then
+				DISTROLIST=(${DISTROLIST[@]} "$1")
+			else
+				errmsg "directory distro/$1 not found"
+				exit 1
+			fi
+			;;
+	esac
+	shift
+done
+
+for i in ${DISTROLIST[@]}
+do
+    process_distro "$i"
+    if [ -f "isofiles/$ISOFILE" ]; then
+        CKSUM=$(sha256sum "isofiles/$ISOFILE" | cut -d' ' -f1)
+        if [[ $CKSUM == $SHA256 ]]; then
+            msg "$ISOFILE ok."
+        else
+            errmsg "$ISOFILE checksum bad!"
+            exit 1
+        fi
+	else
+		errmsg "File isofiles/$ISOFILE not found!"
+		exit 1
+	fi
+
+	install
+done
+
