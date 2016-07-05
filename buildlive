@@ -5,6 +5,8 @@ set -e
 DISTROLIST=()
 ROOTPATH=
 DEVNAME=
+KERNELDIR=
+DATADIR=
 
 . functions.sh
 
@@ -25,7 +27,14 @@ do
 	case "$1" in
 		--root=*)
 			ROOTPATH=${1/--root=}
-			msg "Files will be copy to $ROOTPATH"
+			if [ -d "$ROOTPATH" ]; then
+				KERNELDIR="$ROOTPATH/liveusb-kernel"
+				DATADIR="$ROOTPATH/liveusb-data"
+				install -d "$KERNELDIR" "$DATADIR"
+				msg "Files will be copy to $ROOTPATH"
+			else
+				errmsg "Invalid root path $ROOTPATH"
+			fi
 			;;
 		--dev=*)
 			DEVNAME=${1/--dev=}
@@ -64,6 +73,6 @@ do
 		exit 1
 	fi
 
-	install
+	install_live
 done
 
