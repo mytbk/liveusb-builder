@@ -14,8 +14,9 @@ msg() {
 	echo -e "$1" >&2
 }
 
-errmsg() {
+fatalerror() {
 	msg "\x1b[1;31m$1\x1b[0m"
+	exit 1
 }
 
 usage() {
@@ -27,14 +28,12 @@ do
 	case "$1" in
 		--root=*)
 			ROOTPATH=${1/--root=}
-			if [ -d "$ROOTPATH" ]; then
-				KERNELDIR="$ROOTPATH/liveusb-kernel"
-				DATADIR="$ROOTPATH/liveusb-data"
-				install -d "$KERNELDIR" "$DATADIR"
-				msg "Files will be copy to $ROOTPATH"
-			else
-				errmsg "Invalid root path $ROOTPATH"
-			fi
+			UUID="$(findmnt -o UUID --raw --noheadings $ROOTPATH \
+				|| fatalerror "UUID of $ROOTPATH not found, not a mountpoint?")"
+			KERNELDIR="$ROOTPATH/liveusb-kernel"
+			DATADIR="$ROOTPATH/liveusb-data"
+			install -d "$KERNELDIR" "$DATADIR"
+			msg "Files will be copy to $ROOTPATH"
 			;;
 		--dev=*)
 			DEVNAME=${1/--dev=}
@@ -49,8 +48,7 @@ do
 			then
 				DISTROLIST=(${DISTROLIST[@]} "$1")
 			else
-				errmsg "directory distro/$1 not found"
-				exit 1
+				fatalerror "directory distro/$1 not found"
 			fi
 			;;
 	esac
@@ -65,12 +63,10 @@ do
         if [[ $CKSUM == $SHA256 ]]; then
             msg "$ISOFILE ok."
         else
-            errmsg "$ISOFILE checksum bad!"
-            exit 1
+            fatalerror "$ISOFILE checksum bad!"
         fi
 	else
-		errmsg "File isofiles/$ISOFILE not found!"
-		exit 1
+		fatalerror "File isofiles/$ISOFILE not found!"
 	fi
 
 	install_live
