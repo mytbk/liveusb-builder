@@ -25,6 +25,15 @@ process_distro() {
 	source "distro/$1/install.sh"
 	ISOFILE="$(basename $ISOURL)"
 	ISOMNT="/media/$ISOFILE"
+	MIRRORLIST=(`cat "distro/$1/mirrorlist"`)
+}
+
+download_iso() {
+	for url in ${MIRRORLIST[@]}
+	do
+		wget -O "isofiles/$ISOFILE" "$url/$ISOURL" && return 0
+	done
+	fatalerror "Fail to download $ISOFILE!"
 }
 
 mount_iso() {

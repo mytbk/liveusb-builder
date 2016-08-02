@@ -65,7 +65,8 @@ do
 	if [ -f "isofiles/$ISOFILE" ]; then
 		checksum_verify
 	else
-		fatalerror "File isofiles/$ISOFILE not found!"
+		download_iso
+		checksum_verify
 	fi
 
 	install_live
