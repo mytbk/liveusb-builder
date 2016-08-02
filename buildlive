@@ -71,3 +71,6 @@ do
 	install_live
 	cat "distro/$i/grub.cfg" >> "$GRUBCFG"
 done
+
+grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
+grub-install --boot-directory="$ROOTPATH" --efi-directory="$ROOTPATH" --bootloader-id=grub --target=x86_64-efi --no-nvram "$DEVNAME"
