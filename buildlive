@@ -32,6 +32,7 @@ do
 				|| fatalerror "UUID of $ROOTPATH not found, not a mountpoint?")"
 			KERNELDIR="$ROOTPATH/liveusb-kernel"
 			DATADIR="$ROOTPATH/liveusb-data"
+			GRUBCFG="$ROOTPATH/grub/grub.cfg"
 			install -d "$KERNELDIR" "$DATADIR"
 			msg "Files will be copy to $ROOTPATH"
 			;;
@@ -55,20 +56,18 @@ do
 	shift
 done
 
+install -d "$ROOTPATH/grub"
+echo "uuid=$UUID" > "$GRUBCFG"
+
 for i in ${DISTROLIST[@]}
 do
-    process_distro "$i"
-    if [ -f "isofiles/$ISOFILE" ]; then
-        CKSUM=$(sha256sum "isofiles/$ISOFILE" | cut -d' ' -f1)
-        if [[ $CKSUM == $SHA256 ]]; then
-            msg "$ISOFILE ok."
-        else
-            fatalerror "$ISOFILE checksum bad!"
-        fi
+	process_distro "$i"
+	if [ -f "isofiles/$ISOFILE" ]; then
+		checksum_verify
 	else
 		fatalerror "File isofiles/$ISOFILE not found!"
 	fi
 
 	install_live
+	cat "distro/$i/grub.cfg" >> "$GRUBCFG"
 done
-
