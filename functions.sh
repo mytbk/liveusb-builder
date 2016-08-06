@@ -48,3 +48,13 @@ umount_iso() {
 getuuid() {
 	lsblk -n -o UUID "$1"
 }
+
+as-root() {
+	if [ "$UID" == 0 ]; then
+		"$@"
+	elif type -p sudo > /dev/null; then
+		sudo "$@"
+	elif type -p su > /dev/null; then
+		su -c "$*"
+	fi
+}
