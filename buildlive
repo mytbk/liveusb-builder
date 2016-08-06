@@ -7,6 +7,7 @@ ROOTPATH=
 DEVNAME=
 KERNELDIR=
 DATADIR=
+INSTALL_GRUB=1
 
 . functions.sh
 
@@ -20,7 +21,7 @@ fatalerror() {
 }
 
 usage() {
-	msg "$0 --root=<rootpath> --dev=<devname> [distro 1] [distro 2] ..."
+	msg "$0 --root=<rootpath> --dev=<devname> [--no-grub] [distro 1] [distro 2] ..."
 }
 
 while [[ -n "$1" ]]
@@ -40,7 +41,10 @@ do
 			DEVNAME=${1/--dev=}
 			msg "Boot sector will be written to $DEVNAME"
 			;;
-		*=*)
+		--no-grub)
+			INSTALL_GRUB=0
+			;;
+		*=*|-*)
 			usage
 			exit 1
 			;;
@@ -73,5 +77,7 @@ do
 	cat "distro/$i/grub.cfg" >> "$GRUBCFG"
 done
 
-grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
-grub-install --boot-directory="$ROOTPATH" --efi-directory="$ROOTPATH" --bootloader-id=grub --target=x86_64-efi --no-nvram "$DEVNAME"
+if [ "$INSTALL_GRUB" == 1 ]; then
+	as-root grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
+	as-root grub-install --boot-directory="$ROOTPATH" --efi-directory="$ROOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
+fi
