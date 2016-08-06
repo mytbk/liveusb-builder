@@ -16,7 +16,7 @@ checksum_verify() {
 	if [[ $_cksum == $_hashsum ]]; then
 		msg "$ISOFILE ok."
 	else
-		fatalerror "$ISOFILE checksum bad!"
+		msg "$ISOFILE checksum bad!" && return 1
 	fi
 }
 
@@ -32,7 +32,17 @@ download_iso() {
 	mkdir -p isofiles
 	for url in ${MIRRORLIST[@]}
 	do
-		wget -O "isofiles/$ISOFILE" "$url/$ISOURL" && return 0
+		wget -c -O "isofiles/$ISOFILE" "$url/$ISOURL"
+		if checksum_verify; then
+			return 0
+		else
+			# checksum bad, may be due to a bad partial download
+			# so remove the file and try again
+			rm -f "isofiles/$ISOFILE"
+			wget -O "isofiles/$ISOFILE" "$url/$ISOURL"
+			checksum_verify && return 0
+			rm -f "isofiles/$ISOFILE" # then try next mirror
+		fi
 	done
 	fatalerror "Fail to download $ISOFILE!"
 }

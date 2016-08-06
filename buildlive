@@ -66,11 +66,10 @@ echo "uuid=$UUID" > "$GRUBCFG"
 for i in ${DISTROLIST[@]}
 do
 	process_distro "$i"
-	if [ -f "isofiles/$ISOFILE" ]; then
-		checksum_verify
+	if [ -f "isofiles/$ISOFILE" ] && checksum_verify; then
+		true
 	else
 		download_iso
-		checksum_verify
 	fi
 
 	install_live
