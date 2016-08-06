@@ -29,6 +29,7 @@ process_distro() {
 }
 
 download_iso() {
+	mkdir -p isofiles
 	for url in ${MIRRORLIST[@]}
 	do
 		wget -O "isofiles/$ISOFILE" "$url/$ISOURL" && return 0
