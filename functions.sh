@@ -1,6 +1,9 @@
 checksum_verify() {
 	local _hashtool _hashsum _cksum
-	if [ -n "$SHA256" ]; then
+	if [ -n "$SHA512" ]; then
+		_hashtool=sha512sum
+		_hashsum=$SHA512
+	elif [ -n "$SHA256" ]; then
 		_hashtool=sha256sum
 		_hashsum=$SHA256
 	elif [ -n "$SHA1" ]; then
@@ -21,7 +24,7 @@ checksum_verify() {
 }
 
 process_isoinfo() {
-	unset MD5 SHA1 SHA256
+	unset MD5 SHA1 SHA256 SHA512
 	source "distro/$1/isoinfo"
 	ISOFILE="$(basename $ISOURL)"
 }
