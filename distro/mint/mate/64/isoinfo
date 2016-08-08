@@ -1,0 +1,7 @@
+ISOURL=stable/18/linuxmint-18-mate-64bit.iso
+SHA256=c634f48b248489eef782067484a04978f046e9ccd507d9df35c798a1db9bef22
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd
+http://mirrors.ustc.edu.cn/linuxmint-cd
+)
