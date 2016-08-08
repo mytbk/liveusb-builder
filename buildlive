@@ -66,9 +66,6 @@ if [[ "${#DISTROLIST[@]}" == 0 || -z "$ROOTPATH" ]]; then
 	exit 1
 fi
 
-install -d "$ROOTPATH/grub"
-echo "uuid=$UUID" > "$GRUBCFG"
-
 for i in ${DISTROLIST[@]}
 do
 	process_isoinfo "$i"
@@ -81,6 +78,9 @@ do
 	fi
 done
 
+install -d "$ROOTPATH/grub"
+echo '# The live USB grub.cfg file' > "$GRUBCFG"
+
 for i in `seq 1 ${#DISTROLIST[@]}`
 do
 	ISOFILE="${ISOLIST[$i-1]}"
@@ -88,7 +88,7 @@ do
 	process_distro "$DISTRO"
 
 	install_live
-	cat "distro/$DISTRO/grub.cfg" >> "$GRUBCFG"
+	gen_grubcfg "$DISTRO" >> "$GRUBCFG"
 done
 
 if [ "$INSTALL_GRUB" == 1 ]; then
