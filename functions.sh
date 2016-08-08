@@ -34,6 +34,14 @@ process_distro() {
 	ISOMNT="/media/$ISOFILE"
 }
 
+gen_grubcfg() {
+	local entry
+	for entry in "distro/$1/entry"*
+	do
+		UUID="$UUID" ISOFILE="$ISOFILE" ./mkgrubcfg.sh "$entry"
+	done
+}
+
 download_iso() {
 	mkdir -p isofiles
 	for url in ${mirrorlist[@]}
