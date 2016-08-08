@@ -60,6 +60,11 @@ do
 	shift
 done
 
+if [[ "${#DISTROLIST[@]}" == 0 || -z "$ROOTPATH" ]]; then
+	usage
+	exit 1
+fi
+
 install -d "$ROOTPATH/grub"
 echo "uuid=$UUID" > "$GRUBCFG"
 
