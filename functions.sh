@@ -20,17 +20,23 @@ checksum_verify() {
 	fi
 }
 
-process_distro() {
+process_isoinfo() {
 	unset MD5 SHA1 SHA256
-	source "distro/$1/install.sh"
+	source "distro/$1/isoinfo"
 	ISOFILE="$(basename $ISOURL)"
+}
+
+process_distro() {
+	source "distro/$1/install.sh"
+	# FIXME
+	# As a workaround, now we set $ISOFILE before using this function.
+	# Maybe we have a better solution for this.
 	ISOMNT="/media/$ISOFILE"
-	MIRRORLIST=(`cat "distro/$1/mirrorlist"`)
 }
 
 download_iso() {
 	mkdir -p isofiles
-	for url in ${MIRRORLIST[@]}
+	for url in ${mirrorlist[@]}
 	do
 		wget -c -O "isofiles/$ISOFILE" "$url/$ISOURL"
 		if checksum_verify; then

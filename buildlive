@@ -3,6 +3,7 @@
 set -e
 
 DISTROLIST=()
+ISOLIST=()
 ROOTPATH=
 DEVNAME=
 KERNELDIR=
@@ -70,15 +71,24 @@ echo "uuid=$UUID" > "$GRUBCFG"
 
 for i in ${DISTROLIST[@]}
 do
-	process_distro "$i"
+	process_isoinfo "$i"
+	ISOLIST=("${ISOLIST[@]}" "$ISOFILE")
+
 	if [ -f "isofiles/$ISOFILE" ] && checksum_verify; then
 		true
 	else
 		download_iso
 	fi
+done
+
+for i in `seq 1 ${#DISTROLIST[@]}`
+do
+	ISOFILE="${ISOLIST[$i-1]}"
+	DISTRO="${DISTROLIST[$i-1]}"
+	process_distro "$DISTRO"
 
 	install_live
-	cat "distro/$i/grub.cfg" >> "$GRUBCFG"
+	cat "distro/$DISTRO/grub.cfg" >> "$GRUBCFG"
 done
 
 if [ "$INSTALL_GRUB" == 1 ]; then
