@@ -21,3 +21,9 @@ Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1
 ## status
 
 The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libreboot (i440fx, GRUB txtmode) as firmware.
+
+## Related work
+
+- [Yumi](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/)  
+- [MultiBootLiveUSB](https://github.com/moontide/MultiBootLiveUSB)
+
