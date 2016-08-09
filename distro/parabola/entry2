@@ -1,0 +1,5 @@
+TITLE='Parabola GNU/Linux-libre i686'
+KERNEL=/liveusb-kernel/parabola/i686/vmlinuz
+INITRD=/liveusb-kernel/parabola/i686/parabolaiso.img
+OPTION="parabolaisodevice=/dev/disk/by-uuid/$UUID parabolaisobasedir=liveusb-data/parabola"
+X64=n
