@@ -1,0 +1,7 @@
+ISOURL=16.04.1/ubuntu-16.04.1-desktop-amd64.iso
+MD5=17643c29e3c4609818f26becf76d29a3
+
+mirrorlist=(
+http://releases.ubuntu.com
+http://mirrors.ustc.edu.cn/ubuntu-releases
+)
