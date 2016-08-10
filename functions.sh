@@ -65,6 +65,10 @@ download_iso() {
 }
 
 mount_iso() {
+	if findmnt "$ISOMNT" > /dev/null
+	then
+		umount_iso
+	fi
 	udevil mount "isofiles/$ISOFILE" "$ISOMNT"
 }
 
