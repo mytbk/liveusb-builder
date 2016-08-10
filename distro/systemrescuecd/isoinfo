@@ -1,0 +1,6 @@
+ISOURL=sysresccd-x86/4.8.0/systemrescuecd-x86-4.8.0.iso
+SHA256=06e6847384063bbb67c1c8f0824e995046c9ff125ad07a4214b129efb9b18241
+
+mirrorlist=(
+https://sourceforge.net/projects/systemrescuecd/files
+)

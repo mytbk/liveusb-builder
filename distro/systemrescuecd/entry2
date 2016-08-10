@@ -1,0 +1,5 @@
+TITLE='SystemRescueCd i686'
+KERNEL=/liveusb-kernel/sysrcd/rescue32
+INITRD=/liveusb-kernel/sysrcd/initram.igz
+OPTION="subdir=liveusb-data/sysrcd"
+X64=n
