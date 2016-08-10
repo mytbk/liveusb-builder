@@ -1,0 +1,7 @@
+ISOURL=stable/18/linuxmint-18-cinnamon-64bit.iso
+SHA256=2238dca5b51f9e2674a7e31c46f19141fbdecff6e44c06ecbc9a7bb59b75a816
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd
+http://mirrors.ustc.edu.cn/linuxmint-cd
+)

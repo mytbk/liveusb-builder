@@ -1,0 +1,5 @@
+TITLE='Linux Mint 18 x86_64 with Xfce Desktop'
+KERNEL=/liveusb-kernel/mint/64/vmlinuz
+INITRD=/liveusb-kernel/mint/64/initrd.lz
+OPTION="file=/cdrom/preseed/linuxmint.seed boot=casper iso-scan/filename=/liveusb-data/mint/$ISOFILE quiet splash --"
+X64=y
