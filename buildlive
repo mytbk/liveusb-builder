@@ -81,6 +81,21 @@ done
 install -d "$ROOTPATH/grub"
 echo '# The live USB grub.cfg file' > "$GRUBCFG"
 
+if [ -z "$TXTMODE" ]; then
+	cat >> "$GRUBCFG" << 'EOF'
+insmod all_video
+insmod font
+if loadfont /grub/fonts/unicode.pf2
+then
+	insmod gfxterm
+	set gfxmode=auto
+	set gfxpayload=keep
+	terminal_output gfxterm
+fi
+
+EOF
+fi
+
 for i in `seq 1 ${#DISTROLIST[@]}`
 do
 	ISOFILE="${ISOLIST[$i-1]}"
