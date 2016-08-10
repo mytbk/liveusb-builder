@@ -24,6 +24,11 @@ The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libre
 
 ## Related work
 
+You can search keyword ``multiboot`` on GitHub and find some related projects. Listed below is some related work I know or find.
+
 - [Yumi](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/)  
 - [MultiBootLiveUSB](https://github.com/moontide/MultiBootLiveUSB)
+- [Multiboot USB drive - ArchWiki](https://wiki.archlinux.org/index.php/Multiboot_USB_drive)
+- [cbodden/multiboot](https://github.com/cbodden/multiboot)
+- [mbusb/multibootusb](https://github.com/mbusb/multibootusb)
 
