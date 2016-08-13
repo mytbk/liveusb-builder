@@ -15,7 +15,7 @@ Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1
 
 ```
 # install Arch, Mint (x86_64 with MATE Desktop) and Fedora to USB
-./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/mate/64 fedora
+./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora
 ```
 
 ## status
