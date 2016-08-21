@@ -1,4 +1,6 @@
-ISOURL=16.04.1/ubuntu-16.04.1-desktop-amd64.iso
+_isover=16.04.1
+ISONAME="$DISTRONAME $_isover amd64"
+ISOURL=_isover/ubuntu-_isover-desktop-amd64.iso
 MD5=17643c29e3c4609818f26becf76d29a3
 
 mirrorlist=(

@@ -1,3 +1,4 @@
+ISONAME="$DISTRONAME mini amd64"
 ISOURL=trisquel-mini_7.0_amd64.iso
 MD5=baf8129a2bf08d6c9c3598a149399165
 
