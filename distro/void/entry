@@ -1,0 +1,5 @@
+TITLE='Void Linux x86_64'
+KERNEL=/liveusb-kernel/void/vmlinuz
+INITRD=/liveusb-kernel/void/initrd
+OPTION="root=live:UUID=$UUID ro rd.live.dir=liveusb-data/void"
+X64=y
