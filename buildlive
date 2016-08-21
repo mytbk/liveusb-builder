@@ -23,11 +23,15 @@ fatalerror() {
 
 usage() {
 	msg "$0 --root=<rootpath> --dev=<devname> [--no-grub] [distro 1] [distro 2] ..."
+	msg "use $0 -L to list available distros"
 }
 
 while [[ -n "$1" ]]
 do
 	case "$1" in
+		-L)
+			exec ./listisos.sh
+			;;
 		--root=*)
 			ROOTPATH=${1/--root=}
 			UUID="$(findmnt -o UUID --raw --noheadings $ROOTPATH \
