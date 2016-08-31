@@ -1,0 +1,5 @@
+TITLE='antiX i386'
+KERNEL=
+INITRD=
+OPTION=
+X64=n

@@ -1,0 +1,8 @@
+_ver=16
+ISONAME="$DISTRONAME ${_ver} i386"
+ISOURL="Final/antiX-${_ver}/antiX-${_ver}_386-full.iso"
+MD5=ce143475628eb37b9cec84181fbed96b
+
+mirrorlist=(
+https://sourceforge.net/projects/antix-linux/files
+)

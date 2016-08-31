@@ -1,0 +1,3 @@
+install_live() {
+	true
+}
