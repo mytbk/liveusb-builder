@@ -1,0 +1,6 @@
+ISOURL=slackware64-14.2-iso/slackware64-14.2-install-dvd.iso
+MD5=522db1d2845aaab22078530c67f858c1
+
+mirrorlist=(
+http://mirrors.slackware.com/slackware/slackware-iso
+)
