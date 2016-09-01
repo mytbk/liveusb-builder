@@ -1,0 +1,8 @@
+_isover=2016.2
+ISONAME="$DISTRONAME $_isover amd64"
+ISOURL="kali-$_isover/kali-linux-$_isover-amd64.iso"
+SHA1=25cc6d53a8bd8886fcb468eb4fbb4cdfac895c65
+
+mirrorlist=(
+http://cdimage.kali.org
+)

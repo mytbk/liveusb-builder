@@ -1,0 +1,5 @@
+TITLE='Kali Linux'
+KERNEL=/liveusb-kernel/kali/64/vmlinuz
+INITRD=/liveusb-kernel/kali/64/initrd.img
+OPTION="boot=live username=root hostname=kali findiso=liveusb-data/kali/$ISOFILE"
+X64=y
