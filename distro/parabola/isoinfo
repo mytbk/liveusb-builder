@@ -1,6 +1,6 @@
 _isodate=2016.07.27
 ISONAME="$DISTRONAME $_isodate"
-ISOURL="iso/_isodate/parabola-_isodate-dual.iso"
+ISOURL="iso/${_isodate}/parabola-${_isodate}-dual.iso"
 SHA512=f446bf52dd5b0fd6ad7a5294e257634c09f06d6eb9831703e602238821d03bc7cd87a208c33d969176e297fa2da06fb1c919bb75625e5ff71b0bf2eb7db1f1fa
 
 mirrorlist=(
