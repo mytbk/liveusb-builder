@@ -111,6 +111,9 @@ do
 done
 
 if [ "$INSTALL_GRUB" == 1 ]; then
-	as-root grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
-	as-root grub-install --boot-directory="$ROOTPATH" --efi-directory="$ROOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
+	read -p 'Answer Y to install GRUB.[Y/n] '
+	if [[ "$REPLY" =~ ^[Yy]|^$ ]]; then
+		as-root grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
+		as-root grub-install --boot-directory="$ROOTPATH" --efi-directory="$ROOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
+	fi
 fi
