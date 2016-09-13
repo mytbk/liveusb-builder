@@ -1,0 +1,4 @@
+source distro/debian/isoinfo.common
+ISONAME="$DISTRONAME $_isover amd64 LXDE"
+ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-lxde-desktop.iso"
+SHA1=24f1428ce448a5b4ddad7b8084cfdf7051c7f27f

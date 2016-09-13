@@ -1,0 +1,5 @@
+TITLE='Debian 8.5.0 AMD64 MATE'
+KERNEL=/liveusb-kernel/debian/64/vmlinuz
+INITRD=/liveusb-kernel/debian/64/initrd.img
+OPTION="boot=live findiso=liveusb-data/debian/$ISOFILE"
+X64=y

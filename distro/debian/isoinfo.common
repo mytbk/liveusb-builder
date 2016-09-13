@@ -1,0 +1,6 @@
+_isover=8.5.0
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/debian-cd
+http://mirrors.ustc.edu.cn/debian-cd
+)
