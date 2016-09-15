@@ -23,8 +23,12 @@ checksum_verify() {
 	fi
 }
 
+# process_isoinfo <iso, e.g. mint/64/xfce>
+# loads $DISTRONAME $ISONAME $ISOFILE $ISOURL
 process_isoinfo() {
 	unset MD5 SHA1 SHA256 SHA512
+	_distrobase="distro/$(cut -d'/' -f1 <<< "$1")"
+	source "$_distrobase/distroinfo"
 	source "distro/$1/isoinfo"
 	ISOFILE="$(basename $ISOURL)"
 }
@@ -38,11 +42,18 @@ process_distro() {
 }
 
 gen_grubcfg() {
-	local entry
-	for entry in "distro/$1/entry"*
+	local entry allentries
+	allentries=("distro/$1/entry"*)
+	if [ ${#allentries[@]} -gt 1 ]; then
+		echo "submenu '$ISONAME' {"
+	fi
+	for entry in "${allentries[@]}"
 	do
 		UUID="$UUID" ISOFILE="$ISOFILE" ./mkgrubcfg.sh "$entry"
 	done
+	if [ ${#allentries[@]} -gt 1 ]; then
+		echo '}'
+	fi
 }
 
 download_iso() {
