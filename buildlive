@@ -74,6 +74,7 @@ for i in ${DISTROLIST[@]}
 do
 	process_isoinfo "$i"
 	ISOLIST=("${ISOLIST[@]}" "$ISOFILE")
+	ISONAMELIST=("${ISONAMELIST[@]}" "$ISONAME")
 
 	if [ -f "isofiles/$ISOFILE" ] && checksum_verify; then
 		true
@@ -103,6 +104,7 @@ fi
 for i in `seq 1 ${#DISTROLIST[@]}`
 do
 	ISOFILE="${ISOLIST[$i-1]}"
+	ISONAME="${ISONAMELIST[$i-1]}"
 	DISTRO="${DISTROLIST[$i-1]}"
 	process_distro "$DISTRO"
 
