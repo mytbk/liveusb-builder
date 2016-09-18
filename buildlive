@@ -9,6 +9,7 @@ DEVNAME=
 KERNELDIR=
 DATADIR=
 INSTALL_GRUB=1
+GRUBCFG_ONLY=0
 
 . functions.sh
 
@@ -22,8 +23,13 @@ fatalerror() {
 }
 
 usage() {
-	msg "$0 --root=<rootpath> --dev=<devname> [--no-grub] [distro 1] [distro 2] ..."
-	msg "use $0 -L to list available distros"
+	>&2 cat << EOF
+$0 --root=<rootpath> --dev=<devname> [options] [distro 1] [distro 2] ...
+use $0 -L to list available distros
+options:
+  --no-grub: do not install GRUB loader (still generate grub.cfg)
+  --grubcfg: do not do real install, only generate grub.cfg file
+EOF
 }
 
 while [[ -n "$1" ]]
@@ -48,6 +54,9 @@ do
 			;;
 		--no-grub)
 			INSTALL_GRUB=0
+			;;
+		--grubcfg)
+			GRUBCFG_ONLY=1
 			;;
 		*=*|-*)
 			usage
@@ -106,11 +115,15 @@ do
 	DISTRO="${DISTROLIST[$i-1]}"
 	process_distro "$DISTRO"
 
-	install_live
+	if [ "$GRUBCFG_ONLY" == 0 ]; then
+		install_live
+	fi
 	gen_grubcfg "$DISTRO" >> "$GRUBCFG"
 done
 
-if [ "$INSTALL_GRUB" == 1 ]; then
+if [ "$GRUBCFG_ONLY" == 1 ]; then
+	msg 'Only generate grub.cfg, will not install GRUB.'
+elif [ "$INSTALL_GRUB" == 1 ]; then
 	read -p 'Answer Y to install GRUB.[Y/n] '
 	if [[ "$REPLY" =~ ^[Yy]|^$ ]]; then
 		as-root grub-install --boot-directory="$ROOTPATH" --target=i386-pc "$DEVNAME"
