@@ -63,11 +63,11 @@ do
 			exit 1
 			;;
 		*)
-			if [ -d "distro/$1" ]
+			if [ -f "distro/$1/isoinfo" ]
 			then
 				DISTROLIST=(${DISTROLIST[@]} "$1")
 			else
-				fatalerror "directory distro/$1 not found"
+				fatalerror "directory distro/$1/isoinfo not found"
 			fi
 			;;
 	esac
