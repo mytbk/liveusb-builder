@@ -80,6 +80,10 @@ getuuid() {
 	lsblk -n -o UUID "$1"
 }
 
+getdiskbypart() {
+	lsblk -s --raw -o NAME -n "$1" | tail -n1
+}
+
 as-root() {
 	if [ "$UID" == 0 ]; then
 		"$@"
