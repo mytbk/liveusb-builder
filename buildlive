@@ -24,11 +24,12 @@ fatalerror() {
 
 usage() {
 	>&2 cat << EOF
-$0 --root=<rootpath> --dev=<devname> [options] [distro 1] [distro 2] ...
+$0 --root=<rootpath> [options] [distro 1] [distro 2] ...
 use $0 -L to list available distros
 options:
   --no-grub: do not install GRUB loader (still generate grub.cfg)
   --grubcfg: do not do real install, only generate grub.cfg file
+  --dev=<diskdev>: write boot sector to <diskdev> (default <diskdev> is autodetected from <rootpath>)
 EOF
 }
 
@@ -42,6 +43,7 @@ do
 			ROOTPATH=${1/--root=}
 			UUID="$(findmnt -o UUID --raw --noheadings $ROOTPATH \
 				|| fatalerror "UUID of $ROOTPATH not found, not a mountpoint?")"
+			DEVNAME="/dev/$(getdiskbypart "/dev/disk/by-uuid/$UUID")"
 			KERNELDIR="$ROOTPATH/liveusb-kernel"
 			DATADIR="$ROOTPATH/liveusb-data"
 			GRUBCFG="$ROOTPATH/grub/grub.cfg"
@@ -50,7 +52,6 @@ do
 			;;
 		--dev=*)
 			DEVNAME=${1/--dev=}
-			msg "Boot sector will be written to $DEVNAME"
 			;;
 		--no-grub)
 			INSTALL_GRUB=0
@@ -78,6 +79,8 @@ if [[ "${#DISTROLIST[@]}" == 0 || -z "$ROOTPATH" ]]; then
 	usage
 	exit 1
 fi
+
+msg "Boot sector will be written to $DEVNAME"
 
 for i in ${DISTROLIST[@]}
 do
