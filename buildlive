@@ -10,6 +10,7 @@ KERNELDIR=
 DATADIR=
 INSTALL_GRUB=1
 GRUBCFG_ONLY=0
+DOWNLOAD_ONLY=0
 
 . functions.sh
 
@@ -24,11 +25,12 @@ fatalerror() {
 
 usage() {
 	>&2 cat << EOF
-$0 --root=<rootpath> [options] [distro 1] [distro 2] ...
+$0 [--root=<rootpath>] [options] [distro 1] [distro 2] ...
 use $0 -L to list available distros
 options:
   --no-grub: do not install GRUB loader (still generate grub.cfg)
   --grubcfg: do not do real install, only generate grub.cfg file
+  --downloadonly: only download the ISO files
   --dev=<diskdev>: write boot sector to <diskdev> (default <diskdev> is autodetected from <rootpath>)
 EOF
 }
@@ -59,6 +61,9 @@ do
 		--grubcfg)
 			GRUBCFG_ONLY=1
 			;;
+		--downloadonly)
+			DOWNLOAD_ONLY=1
+			;;
 		*=*|-*)
 			usage
 			exit 1
@@ -75,12 +80,19 @@ do
 	shift
 done
 
-if [[ "${#DISTROLIST[@]}" == 0 || -z "$ROOTPATH" ]]; then
+if [[ -z "$ROOTPATH" && "$DOWNLOAD_ONLY" == 0 ]]; then
 	usage
 	exit 1
 fi
 
-msg "Boot sector will be written to $DEVNAME"
+if [[ "${#DISTROLIST[@]}" == 0 ]]; then
+	usage
+	exit 1
+fi
+
+if [ ! -z "$DEVNAME" ]; then
+	msg "Boot sector will be written to $DEVNAME"
+fi
 
 for i in ${DISTROLIST[@]}
 do
@@ -94,6 +106,10 @@ do
 		download_iso
 	fi
 done
+
+if [[ "$DOWNLOAD_ONLY" == 1 ]]; then
+	exit 0
+fi
 
 install -d "$ROOTPATH/grub"
 echo '# The live USB grub.cfg file' > "$GRUBCFG"
