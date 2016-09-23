@@ -1,7 +1,7 @@
-_isover=4.8.1
+_isover=4.8.2
 ISONAME="$DISTRONAME $_isover"
 ISOURL=sysresccd-x86/$_isover/systemrescuecd-x86-$_isover.iso
-SHA256=144cc9e936c5fa9d11232ac4d1717a8d0ae4b95a2b5f9c8548afab6fbe9cfbd2
+SHA256=0daf5602899ae41f419fc7027f8f77b2c96a3e2a7d923acf65761619dc6c54d8
 
 mirrorlist=(
 https://sourceforge.net/projects/systemrescuecd/files
