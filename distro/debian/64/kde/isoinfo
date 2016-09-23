@@ -1,4 +1,4 @@
 source distro/debian/isoinfo.common
 ISONAME="$DISTRONAME $_isover amd64 KDE"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-kde-desktop.iso"
-SHA1=863481fc0a83511f439fa407b93af9305c7fa9e6
+SHA1=91283353d48e785f242ec82df48fa245eca99f14

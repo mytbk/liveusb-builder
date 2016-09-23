@@ -1,4 +1,4 @@
 source distro/debian/isoinfo.common
 ISONAME="$DISTRONAME $_isover amd64 MATE"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-mate-desktop.iso"
-SHA1=a777cb60e2e69a438e9e0c2f853ef781a15c3954
+SHA1=03ad9cadba4047856cfd6ebf640502036c3bc124

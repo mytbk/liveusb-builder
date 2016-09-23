@@ -1,4 +1,4 @@
 source distro/debian/isoinfo.common
 ISONAME="$DISTRONAME $_isover amd64 Xfce"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-xfce-desktop.iso"
-SHA1=9266a2019fa9a7957f2fbd5904fb17a4565eeb99
+SHA1=916513594b86929b14ddbd5982d667b722c0c273

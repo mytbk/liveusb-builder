@@ -1,4 +1,4 @@
 source distro/debian/isoinfo.common
 ISONAME="$DISTRONAME $_isover amd64 Cinnamon"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-cinnamon-desktop.iso"
-SHA1=b2c33c554a12851a082a02b2e3e357dd33a668d8
+SHA1=6fa1ca66f4ab315802ce29b772437ce4f38b45af
