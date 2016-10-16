@@ -1,0 +1,4 @@
+source distro/manjaro/isoinfo.common
+ISONAME="$DISTRONAME x86_64 $_isodate KDE"
+ISOURL="release/${_isodate}/kde/manjaro-kde-${_isodate}-x86_64.iso"
+SHA256=8ef73ea7f47194d6d09d3dc7f6c9ae80e8a5251fab332eb123ae4b7fabcc16cc

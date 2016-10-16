@@ -1,0 +1,4 @@
+source distro/manjaro/isoinfo.common
+ISONAME="$DISTRONAME i686 $_isodate KDE"
+ISOURL="release/${_isodate}/kde/manjaro-kde-${_isodate}-i686.iso"
+SHA1=b4fbb8c4d4855e570f09770b596bba4c74620076

@@ -1,0 +1,5 @@
+source distro/manjaro/isoinfo.common
+ISONAME="$DISTRONAME x86_64 $_isodate Xfce"
+ISOURL="release/${_isodate}/xfce/manjaro-xfce-${_isodate}-x86_64.iso"
+SHA256=eeb3c56f85d75b1d81bb5c61819d3066c2c71ce8cdea0e0108a7889affb76d84
+
