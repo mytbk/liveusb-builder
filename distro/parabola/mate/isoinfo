@@ -2,4 +2,4 @@
 source distro/parabola/isoinfo
 ISONAME="$DISTRONAME MATE $_isodate"
 ISOURL="iso/mate-${_isodate}/parabola-mate-${_isodate}-dual.iso"
-SHA512=6c8a22a054c44411b9227de96aba2245e6f1a2733963c8c9668c69f72e245770c3790afea20f5122da3701de025bd8f0c367d0362b9e946b3ce2d5af645f01fd
+SHA512=1fb8600398d5c21da41bcddb6e1a492e4383117c5e27e2434e9f69222a3a62b0dd062b0cbc0058f31edb6d205e08bc46c21f1ac9dc731d42ed9218b5e3918fce

@@ -1,7 +1,7 @@
-_isodate=2016.07.27
+_isodate=2016.11.03
 ISONAME="$DISTRONAME $_isodate"
 ISOURL="iso/${_isodate}/parabola-${_isodate}-dual.iso"
-SHA512=f446bf52dd5b0fd6ad7a5294e257634c09f06d6eb9831703e602238821d03bc7cd87a208c33d969176e297fa2da06fb1c919bb75625e5ff71b0bf2eb7db1f1fa
+SHA512=8a532517d1ed08b6f198f5593821d60a12fc87c5671f855bdda5776a85c9a12d7480668b1f8ca7263f991f53dcda5243f3a27da627ae5affc5312f942e395ad3
 
 mirrorlist=(
 https://repo.parabola.nu
