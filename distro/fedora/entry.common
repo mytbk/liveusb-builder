@@ -1,0 +1,5 @@
+TITLE="Fedora $version x86_64"
+KERNEL=/liveusb-kernel/fedora/$version/vmlinuz
+INITRD=/liveusb-kernel/fedora/$version/initrd.img
+OPTION="root=live:UUID=$UUID ro rd.live.dir=liveusb-data/fedora/$version rd.live.image quiet"
+X64=y

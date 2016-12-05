@@ -1,5 +1,0 @@
-TITLE='Fedora 24 x86_64'
-KERNEL=/liveusb-kernel/fedora/vmlinuz
-INITRD=/liveusb-kernel/fedora/initrd.img
-OPTION="root=live:UUID=$UUID ro rd.live.dir=liveusb-data/fedora quiet rhgb"
-X64=y
