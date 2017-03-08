@@ -1,7 +1,7 @@
-_isodate=2016.11.01
+_isodate=2017.03.01
 ISONAME="$DISTRONAME $_isodate"
 ISOURL=iso/$_isodate/archlinux-$_isodate-dual.iso
-SHA1=5f7ceacd97d730a007ef277847713c6031b632ec
+SHA1=f426866ca632a35a3eeae8e4080cff25ec8da614
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/archlinux

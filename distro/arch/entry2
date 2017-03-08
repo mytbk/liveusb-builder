@@ -1,6 +1,0 @@
-TITLE='Arch Linux i686'
-KERNEL=/liveusb-kernel/arch/i686/vmlinuz
-INITRD=(/liveusb-kernel/arch/intel_ucode.img
-		/liveusb-kernel/arch/i686/archiso.img)
-OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/arch"
-X64=n
