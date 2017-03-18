@@ -1,0 +1,5 @@
+TITLE="CentOS $version x86_64"
+KERNEL=/liveusb-kernel/centos/$version/vmlinuz
+INITRD=/liveusb-kernel/centos/$version/initrd.img
+OPTION="noeject inst.stage2=hd:UUID=$UUID:/liveusb-data/centos/$ISOFILE"
+X64=y
