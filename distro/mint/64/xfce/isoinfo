@@ -1,8 +1,4 @@
-ISONAME="$DISTRONAME 18 x86_64 (Xfce)"
-ISOURL=stable/18/linuxmint-18-xfce-64bit.iso
-SHA256=2151852abb34bd62350fab807acc04b3f337d928c7c8092aebea7d0524587acf
-
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd
-http://mirrors.ustc.edu.cn/linuxmint-cd
-)
+source distro/mint/isoinfo.common
+ISONAME="$DISTRONAME ${_isover} x86_64 (Xfce)"
+ISOURL=stable/${_isover}/linuxmint-${_isover}-xfce-64bit.iso
+SHA256=7dc167bd5e6e28641c8aaaf406bba46b1be2d472f85d1d86280ed80e19bb8462

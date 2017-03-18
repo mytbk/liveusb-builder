@@ -1,5 +1,4 @@
-TITLE='Linux Mint 18 x86_64 with MATE Desktop'
-KERNEL=/liveusb-kernel/mint/64/vmlinuz
-INITRD=/liveusb-kernel/mint/64/initrd.lz
-OPTION="file=/cdrom/preseed/linuxmint.seed boot=casper iso-scan/filename=/liveusb-data/mint/$ISOFILE quiet splash --"
-X64=y
+_ver=18.1
+_arch=x86_64
+_de=MATE
+source distro/mint/entry.common

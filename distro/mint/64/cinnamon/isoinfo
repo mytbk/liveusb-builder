@@ -1,8 +1,4 @@
-ISONAME="$DISTRONAME 18 x86_64 (Cinnamon)"
-ISOURL=stable/18/linuxmint-18-cinnamon-64bit.iso
-SHA256=2238dca5b51f9e2674a7e31c46f19141fbdecff6e44c06ecbc9a7bb59b75a816
-
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd
-http://mirrors.ustc.edu.cn/linuxmint-cd
-)
+source distro/mint/isoinfo.common
+ISONAME="$DISTRONAME ${_isover} x86_64 (Cinnamon)"
+ISOURL=stable/${_isover}/linuxmint-${_isover}-cinnamon-64bit.iso
+SHA256=b99f4b98a1b41737ded072dc1a7060ca32224e23236074790d4fc86b51009e3c
