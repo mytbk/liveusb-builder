@@ -92,7 +92,18 @@ getuuid() {
 }
 
 getdiskbypart() {
-	lsblk -s --raw -o NAME -n "$1" | tail -n1
+	# util-linux may have bug when using -s --raw
+	# so it needs some work around
+	local _devlist
+	local _type
+	_devlist=($(lsblk -s --raw -o NAME -n "$1"))
+	for i in "${_devlist[@]}"
+	do
+		_type=$(lsblk -o TYPE -n "/dev/$i" | head -n1)
+		if [[ "$_type" == "disk" ]]; then
+			echo $i
+		fi
+	done
 }
 
 as-root() {
