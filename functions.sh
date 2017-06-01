@@ -96,6 +96,7 @@ getdiskbypart() {
 }
 
 as-root() {
+	echo as-root "$*"
 	if [ "$UID" == 0 ]; then
 		"$@"
 	elif type -p sudo > /dev/null; then
