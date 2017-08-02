@@ -1,0 +1,7 @@
+TITLE='Glorious Arch x86_64'
+_name=garch/xfce
+KERNEL="/liveusb-kernel/$_name/x86_64/vmlinuz"
+INITRD=("/liveusb-kernel/$_name/intel_ucode.img"
+		"/liveusb-kernel/$_name/x86_64/archiso.img")
+OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/$_name"
+X64=y
