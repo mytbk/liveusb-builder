@@ -1,4 +1,4 @@
 source distro/mint/isoinfo.common
 ISONAME="$DISTRONAME ${_isover} x86_64 (Cinnamon)"
 ISOURL=stable/${_isover}/linuxmint-${_isover}-cinnamon-64bit.iso
-SHA256=b99f4b98a1b41737ded072dc1a7060ca32224e23236074790d4fc86b51009e3c
+SHA256=d50e69a3e6d6b9d4b9cbe56cd3736cef665b708a4a2e5d9024f8eef439a91bba

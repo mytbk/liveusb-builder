@@ -1,4 +1,4 @@
-_ver=18.1
+_ver=18.2
 _arch=x86_64
 _de=Xfce
 source distro/mint/entry.common
