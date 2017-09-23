@@ -14,10 +14,6 @@
 
 source "$1"
 
-if [ "$X64" = y ]; then
-	echo 'if cpuid -l; then'
-fi
-
 cat << EOF
 menuentry '$TITLE' {
 	linux $KERNEL $OPTION
@@ -29,9 +25,5 @@ do
 done
 
 echo '}'
-
-if [ "$X64" = y ]; then
-	echo 'fi'
-fi
 
 echo
