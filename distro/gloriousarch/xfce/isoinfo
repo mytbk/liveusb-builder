@@ -1,8 +1,8 @@
-_isodate=20170802
+_isodate=20170923
 _desktop=xfce
 ISONAME="$DISTRONAME $_desktop $_isodate"
 ISOURL=gloriousarch-$_desktop-$_isodate.iso
-SHA256=3b271bc6ad58ca70839cf5f6c1527648728b2d5915605557b5508184e2f3d5ad
+SHA256=b6e3b64005ecf9c6e78297fad72e737fc7a0f7ff68700cdac9f221e1b2f7faa4
 
 mirrorlist=(
 https://sourceforge.net/projects/garchiso/files
