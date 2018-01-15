@@ -1,0 +1,5 @@
+TITLE='Ubuntu 16.04.3 x86_64 Desktop'
+KERNEL=/liveusb-kernel/ubuntu/16.04/64/vmlinuz.efi
+INITRD=/liveusb-kernel/ubuntu/16.04/64/initrd.lz
+OPTION="file=/cdrom/preseed/ubuntu.seed boot=casper iso-scan/filename=/liveusb-data/ubuntu/$ISOFILE quiet splash ---"
+X64=y

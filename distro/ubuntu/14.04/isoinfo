@@ -1,0 +1,10 @@
+_isover=14.04.5
+ISONAME="$DISTRONAME ${_isover} amd64"
+ISOURL="${_isover}/ubuntu-${_isover}-desktop-amd64.iso"
+SHA256=f5ce20686a2f3201f04a309d04171ee15757f00954b33b87f3f1d36b3b0f5356
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases
+http://releases.ubuntu.com
+http://mirrors.ustc.edu.cn/ubuntu-releases
+)
