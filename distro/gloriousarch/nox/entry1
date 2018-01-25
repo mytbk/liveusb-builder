@@ -1,5 +1,5 @@
-TITLE='Glorious Arch x86_64 (Xfce)'
-_name=garch/xfce
+TITLE='Glorious Arch x86_64'
+_name=garch/nox
 KERNEL="/liveusb-kernel/$_name/x86_64/vmlinuz"
 INITRD=("/liveusb-kernel/$_name/intel_ucode.img"
 		"/liveusb-kernel/$_name/x86_64/archiso.img")
