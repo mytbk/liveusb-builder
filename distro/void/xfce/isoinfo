@@ -1,0 +1,8 @@
+_isodate=20171007
+ISONAME="$DISTRONAME Xfce"
+ISOURL="live/$_isodate/void-live-x86_64-$_isodate-xfce.iso"
+SHA256=da88cf207e2f4e16f3c280fa42f8251d8bef6ad3dcb0da8703a8b85cad91c35a
+
+mirrorlist=(
+https://repo.voidlinux.eu
+)

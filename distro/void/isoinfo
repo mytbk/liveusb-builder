@@ -1,7 +1,7 @@
-_isodate=20170220
+_isodate=20171007
 ISONAME="$DISTRONAME"
 ISOURL="live/$_isodate/void-live-x86_64-$_isodate.iso"
-SHA256=eae521df432b6b6a89b9dadd1ae781e73174c270f13805837b00d19c8747a043
+SHA256=a425a42481f22fc22562733c5e32e0e054e80ba68c25236850ec00ea2a31264e
 
 mirrorlist=(
 https://repo.voidlinux.eu
