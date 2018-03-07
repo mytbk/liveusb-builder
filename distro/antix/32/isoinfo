@@ -1,0 +1,9 @@
+_isover=17
+ISONAME="$DISTRONAME $_isover i386"
+ISOURL="Final/antiX-${_isover}_386-full.iso"
+SHA256=47a6909df0b7098960af7e49ff0b45e59a5f358944e0adfb11fe29b026ef19dc
+
+mirrorlist=(
+http://iso.mxrepo.com/Final
+http://it.mxrepo.com/Final
+)

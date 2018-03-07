@@ -1,0 +1,5 @@
+TITLE='antiX 17 i386'
+KERNEL=/liveusb-kernel/antix/32/vmlinuz
+INITRD=/liveusb-kernel/antix/32/initrd.gz
+OPTION="iso iso=liveusb-data/antix/$ISOFILE"
+X64=n
