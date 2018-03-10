@@ -35,6 +35,11 @@ options:
 EOF
 }
 
+unset ISOPATH
+CFGFILE="$HOME/.liveusb-builder"
+test -f "$CFGFILE" && source "$CFGFILE" || true
+ISOPATH=${ISOPATH:-"$HOME/isofiles"}
+
 while [[ -n "$1" ]]
 do
 	case "$1" in
@@ -100,7 +105,7 @@ do
 	ISOLIST=("${ISOLIST[@]}" "$ISOFILE")
 	ISONAMELIST=("${ISONAMELIST[@]}" "$ISONAME")
 
-	if [ -f "isofiles/$ISOFILE" ] && checksum_verify; then
+	if [ -f "$ISOPATH/$ISOFILE" ] && checksum_verify; then
 		true
 	else
 		download_iso

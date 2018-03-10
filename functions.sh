@@ -15,7 +15,7 @@ checksum_verify() {
 	else
 		fatalerror "Cannot find the SHA256, SHA1, or MD5 checksum of $ISOFILE"
 	fi
-	_cksum=$("$_hashtool" "isofiles/$ISOFILE" | cut -d' ' -f1)
+	_cksum=$("$_hashtool" "$ISOPATH/$ISOFILE" | cut -d' ' -f1)
 	if [[ $_cksum == $_hashsum ]]; then
 		msg "$ISOFILE ok."
 	else
@@ -57,19 +57,19 @@ gen_grubcfg() {
 }
 
 download_iso() {
-	mkdir -p isofiles
+	mkdir -p "$ISOPATH"
 	for url in ${mirrorlist[@]}
 	do
-		wget -c -O "isofiles/$ISOFILE" "$url/$ISOURL"
+		wget -c -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"
 		if checksum_verify; then
 			return 0
 		else
 			# checksum bad, may be due to a bad partial download
 			# so remove the file and try again
-			rm -f "isofiles/$ISOFILE"
-			wget -O "isofiles/$ISOFILE" "$url/$ISOURL"
+			rm -f "$ISOPATH/$ISOFILE"
+			wget -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"
 			checksum_verify && return 0
-			rm -f "isofiles/$ISOFILE" # then try next mirror
+			rm -f "$ISOPATH/$ISOFILE" # then try next mirror
 		fi
 	done
 	fatalerror "Fail to download $ISOFILE!"
@@ -80,7 +80,7 @@ mount_iso() {
 	then
 		umount_iso
 	fi
-	udevil mount "isofiles/$ISOFILE" "$ISOMNT"
+	udevil mount "$ISOPATH/$ISOFILE" "$ISOMNT"
 }
 
 umount_iso() {

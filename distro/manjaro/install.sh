@@ -4,6 +4,6 @@ install_live() {
 	cp -r "$ISOMNT/manjaro/boot/$ARCH" "$ISOMNT/manjaro/boot/intel_ucode.img" \
 	       	"$KERNELDIR/manjaro"
 	umount_iso
-        cp "isofiles/$ISOFILE" "$DATADIR/manjaro/"
+        cp "$ISOPATH/$ISOFILE" "$DATADIR/manjaro/"
 }
 
