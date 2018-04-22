@@ -17,13 +17,8 @@ source "$1"
 cat << EOF
 menuentry '$TITLE' {
 	linux $KERNEL $OPTION
+	initrd ${INITRD[@]}
+}
 EOF
-
-for _initrd in "${INITRD[@]}"
-do
-	echo -e "\tinitrd $_initrd"
-done
-
-echo '}'
 
 echo
