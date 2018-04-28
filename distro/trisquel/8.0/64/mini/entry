@@ -1,4 +1,4 @@
-TITLE='Trisquel Mini GNU/Linux-libre x86_64'
+TITLE='Trisquel Mini 8.0 GNU/Linux-libre x86_64'
 KERNEL=/liveusb-kernel/trisquel/64/vmlinuz
 INITRD=/liveusb-kernel/trisquel/64/initrd
 OPTION="file=/cdrom/preseed/trisquel.seed boot=casper iso-scan/filename=/liveusb-data/trisquel/$ISOFILE quiet splash --"

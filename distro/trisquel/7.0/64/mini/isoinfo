@@ -1,5 +1,6 @@
-ISONAME="$DISTRONAME mini amd64"
-ISOURL=trisquel-mini_7.0_amd64.iso
+ver=7.0
+ISONAME="$DISTRONAME mini $ver amd64"
+ISOURL=trisquel-mini_${ver}_amd64.iso
 MD5=baf8129a2bf08d6c9c3598a149399165
 
 mirrorlist=(

@@ -1,0 +1,9 @@
+ver=8.0
+ISONAME="$DISTRONAME mini $ver amd64"
+ISOURL=trisquel-mini_${ver}_amd64.iso
+SHA256=0d3821a465b30ca1de2436af0ab5e39f8eb92a64f5ebd8cd3c42f9a93284c0f7
+
+mirrorlist=(
+http://mirror.fsf.org/trisquel-images
+http://mirrors.ustc.edu.cn/trisquel-images
+)
