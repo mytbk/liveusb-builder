@@ -1,2 +1,2 @@
-version=7.3.1611
+version=7
 source distro/centos/install.sh
