@@ -1,14 +1,21 @@
 # liveusb-builder
-A script suite to create multiboot USB stick for GNU/Linux distributions
 
-## dependencies
+liveusb-builder is a script suite to create multiboot USB stick for GNU/Linux distributions. It's lightweight with few dependencies, and it's extensible and hackable.
+
+The source code is hosted on both [git.wehack.space](https://git.wehack.space/liveusb-builder/) and GitHub.
+
+## Install
+
+You need these packages on your GNU/Linux system to use liveusb-builder.
 
 - udevil: for mounting iso files
 - wget: for downloading
 - syslinux (recommended): bootloader for legacy BIOS
 - GRUB: bootloader for leagacy BIOS if there's no syslinux,  and bootloader for UEFI
 
-## usage
+For Arch Linux users, just install [liveusb-builder-git](https://aur.archlinux.org/packages/liveusb-builder-git/) from AUR.
+
+## Usage
 
 ### The easier way: one FAT32 partition
 
@@ -17,8 +24,8 @@ First mount your USB drive partition. I recommend using udevil so that you can w
 Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1 is mount to /media/sdb1:
 
 ```
-# install Arch, Mint (x86_64 with MATE Desktop) and Fedora to USB
-./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora
+# install Arch, Mint (x86_64 with MATE Desktop) and Fedora 28 to USB
+./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora/28
 ```
 
 ### The more customizable way: using a FAT32 boot partition and an ext2 data partition
@@ -94,7 +101,7 @@ At last, make the Live USB (we install Arch and Fedora 28 in it):
 $ ./buildlive --boot /media/boot --root /media/root arch fedora/28
 ```
 
-## status
+## Status
 
 The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libreboot (i440fx, GRUB txtmode) as firmware.
 
