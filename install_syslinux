@@ -1,0 +1,17 @@
+#!/bin/bash
+# Copyright (C)  2018 Iru Cai <mytbk920423@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Example: ./install_syslinux /dev/sdb /dev/sdb1 /media/boot
+set -e
+
+SYSLINUX_BIOS=/usr/lib/syslinux/bios
+DEVNAME="$1"
+BOOTPART="$2"
+BOOTPATH="$3"
+
+test -d "$SYSLINUX_BIOS"
+syslinux -i "$BOOTPART"
+dd bs=440 count=1 conv=notrunc if="$SYSLINUX_BIOS/mbr.bin" of="$DEVNAME"
+install -d "$BOOTPATH/syslinux"
+cp "$SYSLINUX_BIOS"/*.c32 "$BOOTPATH/syslinux"

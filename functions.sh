@@ -59,6 +59,19 @@ gen_grubcfg() {
 	fi
 }
 
+gen_syslinux() {
+	local entry allentries count name
+	allentries=("distro/$1/entry"*)
+	name=$(echo $1|sed 's/\//_/g')
+	count=0
+	for entry in "${allentries[@]}"
+	do
+		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="$name$count" \
+			./mksyslinux.sh "$entry"
+		count=$(($count+1))
+	done
+}
+
 download_iso() {
 	mkdir -p "$ISOPATH"
 	for url in ${mirrorlist[@]}
@@ -117,5 +130,43 @@ as-root() {
 		sudo "$@"
 	elif type -p su > /dev/null; then
 		su -c "$*"
+	fi
+}
+
+syslinux_header() {
+	cat << EOF
+UI menu.c32
+
+MENU TITLE Live USB
+MENU COLOR border       30;44   #40ffffff #a0000000 std
+MENU COLOR title        1;36;44 #9033ccff #a0000000 std
+MENU COLOR sel          7;37;40 #e0ffffff #20ffffff all
+MENU COLOR unsel        37;44   #50ffffff #a0000000 std
+MENU COLOR help         37;40   #c0ffffff #a0000000 std
+MENU COLOR timeout_msg  37;40   #80ffffff #00000000 std
+MENU COLOR timeout      1;37;40 #c0ffffff #00000000 std
+MENU COLOR msg07        37;40   #90ffffff #a0000000 std
+MENU COLOR tabmsg       31;40   #30ffffff #00000000 std
+
+EOF
+}
+
+grubcfg_header() {
+	echo '# The live USB grub.cfg file'
+
+	if [ -z "$TXTMODE" ]; then
+		cat  << 'EOF'
+if [ ${grub_platform} == efi ]; then
+	insmod all_video
+	insmod font
+	if loadfont /grub/fonts/unicode.pf2; then
+		insmod gfxterm
+		set gfxmode=auto
+		set gfxpayload=keep
+		terminal_output gfxterm
+	fi
+fi
+
+EOF
 	fi
 }

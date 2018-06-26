@@ -107,6 +107,8 @@ fi
 if [[ "$DOWNLOAD_ONLY" == 0 ]]; then
 	UUID="$(findmnt -o UUID --raw --noheadings $ROOTPATH \
 		|| fatalerror "UUID of $ROOTPATH not found, not a mountpoint?")"
+	BOOTPART="$(findmnt -o SOURCE --raw --noheadings $BOOTPATH \
+		|| fatalerror "$BOOTPATH seems not a mountpoint!")"
 	# liveusb kernel and data should be placed on one disk
 	# so get DEVNAME by the mountpoint of ROOTPATH is ok
 	DEVNAME="/dev/$(getdiskbypart "/dev/disk/by-uuid/$UUID")"
@@ -114,7 +116,8 @@ if [[ "$DOWNLOAD_ONLY" == 0 ]]; then
 	KERNELDIR="$BOOTPATH/liveusb-kernel"
 	DATADIR="$ROOTPATH/liveusb-data"
 	GRUBCFG="$BOOTPATH/grub/grub.cfg"
-	install -d "$BOOTPATH/grub"
+	SYSLINUXCFG="$BOOTPATH/syslinux/syslinux.cfg"
+	install -d "$BOOTPATH/grub" "$BOOTPATH/syslinux"
 	install -d "$KERNELDIR" "$DATADIR"
 	msg "Files will be copy to $ROOTPATH"
 fi
@@ -145,23 +148,8 @@ if [[ "$DOWNLOAD_ONLY" == 1 ]]; then
 	exit 0
 fi
 
-echo '# The live USB grub.cfg file' > "$GRUBCFG"
-
-if [ -z "$TXTMODE" ]; then
-	cat >> "$GRUBCFG" << 'EOF'
-if [ ${grub_platform} == efi ]; then
-	insmod all_video
-	insmod font
-	if loadfont /grub/fonts/unicode.pf2; then
-		insmod gfxterm
-		set gfxmode=auto
-		set gfxpayload=keep
-		terminal_output gfxterm
-	fi
-fi
-
-EOF
-fi
+grubcfg_header > "$GRUBCFG"
+syslinux_header > "$SYSLINUXCFG"
 
 for i in `seq 1 ${#DISTROLIST[@]}`
 do
@@ -174,14 +162,18 @@ do
 		install_live
 	fi
 	gen_grubcfg "$DISTRO" >> "$GRUBCFG"
+	gen_syslinux "$DISTRO" >> "$SYSLINUXCFG"
 done
 
 if [ "$GRUBCFG_ONLY" == 1 ]; then
-	msg 'Only generate grub.cfg, will not install GRUB.'
+	msg 'Only generate grub.cfg and syslinux.cfg, will not install bootloader.'
 elif [ "$INSTALL_GRUB" == 1 ]; then
-	read -p 'Answer Y to install GRUB.[Y/n] '
+	read -p 'Answer Y to install bootloader.[Y/n] '
 	if [[ "$REPLY" =~ ^[Yy]|^$ ]]; then
-		as-root grub-install --force --boot-directory="$BOOTPATH" --target=i386-pc "$DEVNAME"
+		if ! as-root ./install_syslinux "$DEVNAME" "$BOOTPART" "$BOOTPATH"; then
+			msg 'Failed to install syslinux, try to install GRUB as legacy BIOS bootloader.'
+			as-root grub-install --force --boot-directory="$BOOTPATH" --target=i386-pc "$DEVNAME"
+		fi
 		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
 	fi
 fi
