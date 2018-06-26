@@ -3,11 +3,14 @@ A script suite to create multiboot USB stick for GNU/Linux distributions
 
 ## dependencies
 
-- udevil: for mounting iso files  
+- udevil: for mounting iso files
 - wget: for downloading
-- GRUB with BIOS and UEFI support
+- syslinux (recommended): bootloader for legacy BIOS
+- GRUB: bootloader for leagacy BIOS if there's no syslinux,  and bootloader for UEFI
 
 ## usage
+
+### The easier way: one FAT32 partition
 
 First mount your USB drive partition. I recommend using udevil so that you can write files without as root.
 
@@ -18,6 +21,79 @@ Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1
 ./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora
 ```
 
+### The more customizable way: using a FAT32 boot partition and an ext2 data partition
+
+Partition your disk as follows to create a 500MB FAT32 boot partition, and an ext2 partition using the remaining space, suppose your USB is /dev/sdb.
+
+```
+$ sudo fdisk /dev/sdb
+
+Command (m for help): o
+Created a new DOS disklabel with disk identifier 0x24c5dd70.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p):
+
+Using default response p.
+Partition number (1-4, default 1):
+First sector (2048-30463999, default 2048):
+Last sector, +sectors or +size{K,M,G,T,P} (2048-30463999, default 30463999): +500M
+
+Created a new partition 1 of type 'Linux' and of size 500 MiB.
+
+Command (m for help): t
+Selected partition 1
+Hex code (type L to list all codes): b
+Changed type of partition 'Linux' to 'W95 FAT32'.
+
+Command (m for help): a
+Selected partition 1
+The bootable flag on partition 1 is enabled now.
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p):
+
+Using default response p.
+Partition number (2-4, default 2):
+First sector (1026048-30463999, default 1026048):
+Last sector, +sectors or +size{K,M,G,T,P} (1026048-30463999, default 30463999):
+
+Created a new partition 2 of type 'Linux' and of size 14 GiB.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+
+Format the partitions:
+
+```
+sudo mkfs.msdos -F 32 /dev/sdb1
+sudo mkfs.ext2 /dev/sdb2
+```
+
+Mount them and create the directory, and we need to make the directory ``liveusb-data`` writable by the current user.
+
+```
+udevil mount /dev/sdb1 /media/boot
+udevil mount /dev/sdb2 /media/root
+sudo install -d /media/root/liveusb-data
+sudo chown $(whoami) /media/root/liveusb-data/
+```
+
+At last, make the Live USB (we install Arch and Fedora 28 in it):
+
+```
+$ ./buildlive --boot /media/boot --root /media/root arch fedora/28
+```
+
 ## status
 
 The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libreboot (i440fx, GRUB txtmode) as firmware.
@@ -26,7 +102,7 @@ The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libre
 
 You can search keyword ``multiboot`` on GitHub and find some related projects. Listed below is some related work I know or find.
 
-- [Yumi](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/)  
+- [Yumi](https://www.pendrivelinux.com/yumi-multiboot-usb-creator/)
 - [MultiBootLiveUSB](https://github.com/moontide/MultiBootLiveUSB)
 - [Multiboot USB drive - ArchWiki](https://wiki.archlinux.org/index.php/Multiboot_USB_drive)
 - [cbodden/multiboot](https://github.com/cbodden/multiboot)
