@@ -1,0 +1,8 @@
+ISONAME="$DISTRONAME 28 Workstation"
+ISOURL=releases/28/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-28-1.1.iso
+SHA256=bd5c9ee34b7698eb0852a320da4fbdf616222a493d99f6054aa96afa96207bfb
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/fedora
+http://mirrors.ustc.edu.cn/fedora/linux
+)
