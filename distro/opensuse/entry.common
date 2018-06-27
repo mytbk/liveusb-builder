@@ -1,0 +1,5 @@
+TITLE="OpenSUSE $version x86_64"
+KERNEL=/liveusb-kernel/opensuse/$version/linux
+INITRD=/liveusb-kernel/opensuse/$version/initrd
+OPTION="root=live:CDLABEL=$CDLABEL iso-scan/filename=liveusb-data/opensuse/$ISOFILE"
+X64=y

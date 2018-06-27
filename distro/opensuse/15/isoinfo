@@ -1,0 +1,8 @@
+ISONAME="$DISTRONAME 15 KDE Live"
+ISOURL=distribution/leap/15.0/live/openSUSE-Leap-15.0-KDE-Live-x86_64-Snapshot17.9-Media.iso
+SHA256=e5b8c9ae1dd596e8fc5cda89d616cc6e8f5aecccba668d198a8c2d3b19175e9e
+
+mirrorlist=(
+https://download.opensuse.org
+https://mirrors.tuna.tsinghua.edu.cn/opensuse
+)

@@ -1,0 +1,3 @@
+version=15
+CDLABEL=openSUSE_Leap_15.0_KDE_Live
+source distro/opensuse/entry.common
