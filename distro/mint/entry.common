@@ -1,4 +1,4 @@
-_ver=18.3
+_ver=19
 TITLE="Linux Mint $_ver $_arch with $_de Desktop"
 if [[ "$_arch" == x86_64 ]]; then
    _bit=64
