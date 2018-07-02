@@ -1,0 +1,8 @@
+ISONAME="$DISTRONAME $_isodate"
+ISOURL="iso/openrc-cli-${_isodate}/parabola-openrc-cli-${_arch}-netinstall-${_isodate}.iso"
+
+mirrorlist=(
+https://repomirror.parabola.nu
+http://mirror.yandex.ru/mirrors/parabola
+http://parabolagnulinux.mirrors.linux.ro
+)

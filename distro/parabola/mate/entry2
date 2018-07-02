@@ -1,5 +1,0 @@
-TITLE='Parabola GNU/Linux-libre MATE i686'
-KERNEL=/liveusb-kernel/parabola/i686/vmlinuz
-INITRD=/liveusb-kernel/parabola/i686/parabolaiso.img
-OPTION="parabolaisodevice=/dev/disk/by-uuid/$UUID parabolaisobasedir=liveusb-data/parabola/mate"
-X64=n

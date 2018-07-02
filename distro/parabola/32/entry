@@ -1,0 +1,3 @@
+ARCH=i686
+X64=n
+source distro/parabola/entry

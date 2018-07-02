@@ -1,0 +1,5 @@
+_isodate=2018.06.11
+_arch=x86_64
+SHA512=0af995c407bf27a3ef040681fe1493a626edde7034a2ef4bf14d1da51ec5db5bd6dcfc13670d735affcae00853517b36c9e35fd8fb86535d79afd84807dabe33
+
+source distro/parabola/isoinfo.common

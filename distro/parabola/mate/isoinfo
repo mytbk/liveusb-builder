@@ -1,5 +1,0 @@
-# same _isodate, mirrorlist
-source distro/parabola/isoinfo
-ISONAME="$DISTRONAME MATE $_isodate"
-ISOURL="iso/mate-${_isodate}/parabola-mate-${_isodate}-dual.iso"
-SHA512=1fb8600398d5c21da41bcddb6e1a492e4383117c5e27e2434e9f69222a3a62b0dd062b0cbc0058f31edb6d205e08bc46c21f1ac9dc731d42ed9218b5e3918fce
