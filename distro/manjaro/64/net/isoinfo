@@ -1,5 +1,0 @@
-source distro/manjaro/isoinfo.common
-ISONAME="$DISTRONAME x86_64 $_isodate Net install"
-ISOURL="release/${_isodate}/netinstall/manjaro-net-${_isodate}-x86_64.iso"
-SHA1=42e0c1391c63070a76f4840c21368a23fd65d334
-

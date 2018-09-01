@@ -1,5 +1,5 @@
-_isodate=16.08
+_isodate=17.1.12
 
 mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/manjaro-cd
+https://osdn.net/dl/manjaro
 )
