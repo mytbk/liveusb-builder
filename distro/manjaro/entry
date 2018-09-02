@@ -1,7 +1,7 @@
 TITLE="Manjaro Linux $_arch $_flavour"
-KERNEL=/liveusb-kernel/manjaro/$_arch/manjaro
+KERNEL=/liveusb-kernel/manjaro/vmlinuz-${_arch}
 INITRD=(/liveusb-kernel/manjaro/intel_ucode.img
-		/liveusb-kernel/manjaro/$_arch/manjaro.img)
-OPTION="misolabel=MJRO1608 img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/manjaro/$ISOFILE"
+		/liveusb-kernel/manjaro/initramfs-${_arch}.img)
+OPTION="img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/manjaro/$ISOFILE"
 [ $_arch == i686 ] && X64=n || X64=y
 
