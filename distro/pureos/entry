@@ -1,0 +1,5 @@
+TITLE='PureOS'
+KERNEL=/liveusb-kernel/pureos/vmlinuz
+INITRD=/liveusb-kernel/pureos/initrd.img
+OPTION="boot=casper live-media=/dev/disk/by-uuid/$UUID live-media-path=liveusb-data/pureos quiet splash ---"
+X64=y

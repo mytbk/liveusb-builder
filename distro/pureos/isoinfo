@@ -1,0 +1,7 @@
+ISONAME="PureOS"
+ISOURL=live/gnome/2018-08-26/pureos-8.0-gnome-live_20180826-amd64.hybrid.iso
+SHA256=53e9f3cb8b7c50a125eace8afabad2e2790ca62d2070811037a3286ed072a7e5
+
+mirrorlist=(
+https://downloads.puri.sm
+)

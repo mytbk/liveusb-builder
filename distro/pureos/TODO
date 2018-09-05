@@ -1,0 +1,1 @@
+The PureOS installer (calamares) requires filesystem.squashfs located at /casper in your data root partition. You need to work around this if you want to install PureOS via this Live USB.
