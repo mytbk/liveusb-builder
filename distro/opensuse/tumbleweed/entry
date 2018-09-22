@@ -1,0 +1,6 @@
+version=tumbleweed
+TITLE="OpenSUSE Tumbleweed x86_64"
+KERNEL=/liveusb-kernel/opensuse/$version/linux
+INITRD=/liveusb-kernel/opensuse/$version/initrd
+OPTION="install=hd:liveusb-data/opensuse/$ISOFILE"
+X64=y

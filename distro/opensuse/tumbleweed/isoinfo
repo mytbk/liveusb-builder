@@ -1,0 +1,27 @@
+# Copyright (C)  2018 Iru Cai <mytbk920423@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+ISONAME="$DISTRONAME Tumbleweed"
+ISOURL=tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso
+VERIFY=verify_suse
+VERIFILE=openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256
+
+mirrorlist=(
+https://download.opensuse.org
+)
+
+verify_suse() {
+	local _hashsum _cksum
+	if ! test -f "$ISOPATH/$VERIFILE"
+	then
+		wget -O "$ISOPATH/$VERIFILE" "https://download.opensuse.org/tumbleweed/iso/$VERIFILE"
+	fi
+	gpg --verify "$ISOPATH/$VERIFILE"
+	_hashsum="$(grep openSUSE-Tumbleweed-DVD-x86_64 "$ISOPATH/$VERIFILE" | cut -d' ' -f1)"
+	_cksum=$(sha256sum "$ISOPATH/$ISOFILE" | cut -d' ' -f1)
+	if [[ $_cksum == $_hashsum ]]; then
+		msg "$ISOFILE ok."
+	else
+		msg "$ISOFILE checksum bad!" && return 1
+	fi
+}
