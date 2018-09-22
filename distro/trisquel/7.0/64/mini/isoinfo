@@ -1,9 +1,0 @@
-ver=7.0
-ISONAME="$DISTRONAME mini $ver amd64"
-ISOURL=trisquel-mini_${ver}_amd64.iso
-MD5=baf8129a2bf08d6c9c3598a149399165
-
-mirrorlist=(
-http://mirror.fsf.org/trisquel-images
-http://mirrors.ustc.edu.cn/trisquel-images
-)
