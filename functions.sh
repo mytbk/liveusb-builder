@@ -12,9 +12,8 @@ checksum_verify() {
 	elif [ -n "$SHA1" ]; then
 		_hashtool=sha1sum
 		_hashsum=$SHA1
-	elif [ -n "$MD5" ]; then
-		_hashtool=md5sum
-		_hashsum=$MD5
+	elif [ -n "$VERIFY" ]; then
+		"$VERIFY" && return 0
 	else
 		fatalerror "Cannot find the SHA256, SHA1, or MD5 checksum of $ISOFILE"
 	fi
