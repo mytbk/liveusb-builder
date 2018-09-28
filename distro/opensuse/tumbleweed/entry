@@ -1,3 +1,6 @@
+# Thank aguslr's multibootusb (https://github.com/aguslr/multibootusb)
+# for the command line
+
 version=tumbleweed
 TITLE="OpenSUSE Tumbleweed x86_64"
 KERNEL=/liveusb-kernel/opensuse/$version/linux
