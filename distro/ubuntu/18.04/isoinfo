@@ -1,7 +1,7 @@
-_isover=16.04.5
+_isover=18.04.1
 ISONAME="$DISTRONAME ${_isover} amd64"
 ISOURL="${_isover}/ubuntu-${_isover}-desktop-amd64.iso"
-SHA256=6b505fd3b6f816f8ff058710f127a9900e9233e496783ce08a0022814d224810
+SHA256=5748706937539418ee5707bd538c4f5eabae485d17aa49fb13ce2c9b70532433
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases

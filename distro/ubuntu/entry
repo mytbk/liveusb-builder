@@ -1,0 +1,5 @@
+TITLE="Ubuntu ${_ver} x86_64 Desktop"
+KERNEL="/liveusb-kernel/ubuntu/${_ver}/64/${VMLINUZ}"
+INITRD="/liveusb-kernel/ubuntu/${_ver}/64/${INITRD}"
+OPTION="file=/cdrom/preseed/ubuntu.seed boot=casper iso-scan/filename=/liveusb-data/ubuntu/$ISOFILE"
+X64=y
