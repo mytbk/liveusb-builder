@@ -1,8 +1,0 @@
-ISONAME="$DISTRONAME 25 Workstation"
-ISOURL=releases/25/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-25-1.3.iso
-SHA256=818017f42a2741cfaf20e94aecf6a63d1b995abfdaff5917df7218d0d89976a7
-
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/fedora
-http://mirrors.ustc.edu.cn/fedora/linux
-)
