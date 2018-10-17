@@ -1,0 +1,10 @@
+_isover=milky-way-v0.2.4
+ISONAME='Hyperbola Milky Way v0.2.4'
+ISOURL=other/live_images/gnu-plus-linux-libre/hyperbola-milky-way-v0.2.4/hyperbola-${_isover}-dual.iso
+SHA512=5eac2ec6842614c9874cc81c40cf5cb6232a8e9afcbb9a65b7bbb09d8a8d0e141567681fe69742c3584ee02cfd4ababeb840fda065746472d34351e6a26fc525
+
+mirrorlist=(
+https://mirror.cedia.org.ec/hyperbola/sources
+https://repo.hyperbola.info:50000
+https://ftp.nluug.nl/os/Linux/distr/hyperbola/sources
+)

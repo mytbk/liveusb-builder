@@ -1,0 +1,5 @@
+TITLE='Hyperbola GNU/Linux-libre x86_64'
+KERNEL=/liveusb-kernel/hyperbola/boot/x86_64/vmlinuz
+INITRD=(/liveusb-kernel/hyperbola/boot/x86_64/hyperiso.img)
+OPTION="hyperisodevice=/dev/disk/by-uuid/$UUID hyperisobasedir=liveusb-data/hyperbola"
+X64=y
