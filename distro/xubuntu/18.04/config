@@ -1,0 +1,3 @@
+_ver=18.04
+VMLINUZ=vmlinuz
+INITRD=initrd

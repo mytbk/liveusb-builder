@@ -1,0 +1,8 @@
+_isover=18.04.1
+ISONAME="$DISTRONAME ${_isover} amd64"
+ISOURL="${_isover}/release/xubuntu-${_isover}-desktop-amd64.iso"
+SHA256=cd4ad5df40a542db9eef2e0449a6c1839c5c14e26053642c4ad39d5026b73b1a
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/xubuntu/releases
+)
