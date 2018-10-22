@@ -25,12 +25,16 @@ checksum_verify() {
 	fi
 }
 
+set_distro() {
+	_distrobase="distro/$(cut -d'/' -f1 <<< "$1")"
+	source "$_distrobase/distroinfo"
+}
+
 # process_isoinfo <iso, e.g. mint/64/xfce>
 # loads $DISTRONAME $ISONAME $ISOFILE $ISOURL
 process_isoinfo() {
 	unset MD5 SHA1 SHA256 SHA512
-	_distrobase="distro/$(cut -d'/' -f1 <<< "$1")"
-	source "$_distrobase/distroinfo"
+	set_distro "$1"
 	source "distro/$1/isoinfo"
 	ISOFILE="$(basename $ISOURL)"
 }
