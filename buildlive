@@ -14,6 +14,8 @@ DATADIR=
 INSTALL_GRUB=1
 GRUBCFG_ONLY=0
 DOWNLOAD_ONLY=0
+UMOUNT_BOOT=0
+UMOUNT_ROOT=0
 
 . functions.sh
 
@@ -40,6 +42,18 @@ options:
   --downloadonly: only download the ISO files
   --dev=<diskdev>: write boot sector to <diskdev> (default <diskdev> is autodetected from <rootpath>)
 EOF
+}
+
+try_mount() {
+	local mnt
+	if [[ "$1" =~ ^/dev ]]
+	then
+		mnt=$(mktemp -u /media/buildlive.XXXXXX)
+		udevil mount "$1" "$mnt" > /dev/null
+	else
+		mnt="$1"
+	fi
+	echo "$mnt"
 }
 
 unset ISOPATH
@@ -100,8 +114,20 @@ if [[ -z "$ROOTPATH" && "$DOWNLOAD_ONLY" == 0 ]]; then
 	exit 1
 fi
 
+_mnt="$(try_mount "$ROOTPATH")"
+if [ "${_mnt}" != "$ROOTPATH" ]; then
+	ROOTPATH="${_mnt}"
+	UMOUNT_ROOT=1
+fi
+
 if [[ -z "$BOOTPATH" ]]; then
 	BOOTPATH="$ROOTPATH"
+else
+	_mnt="$(try_mount "$BOOTPATH")"
+	if [ "${_mnt}" != "$BOOTPATH" ]; then
+		BOOTPATH="${_mnt}"
+		UMOUNT_BOOT=1
+	fi
 fi
 
 if [[ "$DOWNLOAD_ONLY" == 0 ]]; then
@@ -180,4 +206,13 @@ elif [ "$INSTALL_GRUB" == 1 ]; then
 		fi
 		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
 	fi
+fi
+
+if [ "$UMOUNT_BOOT" == 1 ]; then
+	msg 'Trying to umount the boot mountpoint, you may need to wait for sync() to complete.'
+	udevil umount "$BOOTPATH"
+fi
+if [ "$UMOUNT_ROOT" == 1 ]; then
+	msg 'Trying to umount the root mountpoint, you may need to wait for sync() to complete.'
+	udevil umount "$ROOTPATH"
 fi
