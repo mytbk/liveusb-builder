@@ -1,4 +1,3 @@
-_ver=19
 TITLE="Linux Mint $_ver $_arch with $_de Desktop"
 if [[ "$_arch" == x86_64 ]]; then
    _bit=64
@@ -7,6 +6,6 @@ else
    _bit=32
    X64=n
 fi
-KERNEL=/liveusb-kernel/mint/$_bit/vmlinuz
-INITRD=/liveusb-kernel/mint/$_bit/initrd.lz
+KERNEL=/liveusb-kernel/mint/$_ver/$_de/$_bit/vmlinuz
+INITRD=/liveusb-kernel/mint/$_ver/$_de/$_bit/initrd.lz
 OPTION="file=/cdrom/preseed/linuxmint.seed boot=casper iso-scan/filename=/liveusb-data/mint/$ISOFILE quiet splash --"

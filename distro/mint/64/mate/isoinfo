@@ -1,4 +1,4 @@
 source distro/mint/isoinfo.common
 ISONAME="$DISTRONAME ${_isover} x86_64 (MATE)"
-ISOURL=stable/${_isover}/linuxmint-${_isover}-mate-64bit.iso
-SHA256=a5f9893d2960eaea1a4d35a86c1d2a627a2a8ee3e578f01514ab75c8ef323a8d
+ISOURL=stable/${_isover}/linuxmint-${_isover}-mate-64bit-v2.iso
+SHA256=f8164654b7600ced1aa8ef6abee2e56620388b0baa161d7b17699f425223d7c7

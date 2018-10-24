@@ -1,4 +1,4 @@
 source distro/mint/isoinfo.common
 ISONAME="$DISTRONAME ${_isover} x86_64 (Xfce)"
-ISOURL=stable/${_isover}/linuxmint-${_isover}-xfce-64bit.iso
-SHA256=772786adad318c0571ff621fe13e66ebde1366557d0579bd045a3c649ffb917a
+ISOURL=stable/${_isover}/linuxmint-${_isover}-xfce-64bit-v2.iso
+SHA256=c996a0de1e010476f36ed55322cb055b07d3bd507f0c60eff65b07634f20f897
