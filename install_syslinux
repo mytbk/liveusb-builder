@@ -10,6 +10,10 @@ DEVNAME="$1"
 BOOTPART="$2"
 BOOTPATH="$3"
 
+if [ ! -d "$SYSLINUX_BIOS" ]; then
+	SYSLINUX_BIOS=/usr/share/syslinux
+fi
+
 test -d "$SYSLINUX_BIOS"
 syslinux -i "$BOOTPART"
 dd bs=440 count=1 conv=notrunc if="$SYSLINUX_BIOS/mbr.bin" of="$DEVNAME"
