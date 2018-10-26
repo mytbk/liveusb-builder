@@ -44,7 +44,7 @@ process_distro() {
 	# FIXME
 	# As a workaround, now we set $ISOFILE before using this function.
 	# Maybe we have a better solution for this.
-	ISOMNT="/media/$ISOFILE"
+	# ISOMNT="/media/$ISOFILE"
 }
 
 gen_grubcfg() {
@@ -95,11 +95,19 @@ download_iso() {
 }
 
 mount_iso() {
-	if findmnt "$ISOMNT" > /dev/null
+	LOOPDEV=$(/sbin/losetup -n -O NAME -j "$ISOPATH/$ISOFILE")
+	if [[ -n "$LOOPDEV" ]]
 	then
+		ISOMNT="$LOOPDEV"
 		umount_iso
 	fi
-	udevil mount "$ISOPATH/$ISOFILE" "$ISOMNT"
+
+	udevil mount "$ISOPATH/$ISOFILE"
+	LOOPDEV=$(/sbin/losetup -n -O NAME -j "$ISOPATH/$ISOFILE")
+	if [[ -n "$LOOPDEV" ]]
+	then
+		ISOMNT=$(findmnt -n -o TARGET "$LOOPDEV")
+	fi
 }
 
 umount_iso() {
