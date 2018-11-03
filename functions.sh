@@ -79,16 +79,17 @@ download_iso() {
 	mkdir -p "$ISOPATH"
 	for url in ${mirrorlist[@]}
 	do
-		wget -c -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"
-		if checksum_verify; then
-			return 0
-		else
-			# checksum bad, may be due to a bad partial download
-			# so remove the file and try again
-			rm -f "$ISOPATH/$ISOFILE"
-			wget -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"
-			checksum_verify && return 0
-			rm -f "$ISOPATH/$ISOFILE" # then try next mirror
+		if wget -c -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"; then
+			if checksum_verify; then
+				return 0
+			else
+				# checksum bad, may be due to a bad partial download
+				# so remove the file and try again
+				rm -f "$ISOPATH/$ISOFILE"
+				wget -O "$ISOPATH/$ISOFILE" "$url/$ISOURL"
+				checksum_verify && return 0
+				rm -f "$ISOPATH/$ISOFILE" # then try next mirror
+			fi
 		fi
 	done
 	fatalerror "Fail to download $ISOFILE!"
