@@ -1,0 +1,8 @@
+ISONAME="$DISTRONAME 29 Workstation"
+ISOURL=releases/29/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-29-1.2.iso
+SHA256=653cc283749100e9b46625d23938ff890ae29482bef142f5a0f99c5a5ddc03e9
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/fedora
+http://mirrors.ustc.edu.cn/fedora/linux
+)
