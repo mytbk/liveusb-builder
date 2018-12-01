@@ -1,8 +1,0 @@
-ISONAME="$DISTRONAME 27 Workstation"
-ISOURL=releases/27/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-27-1.6.iso
-SHA256=d242345fa6b5f8cc80e2317c46d15bb1fc4ad70b9a3516c9bc2fb6f3599c8117
-
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/fedora
-http://mirrors.ustc.edu.cn/fedora/linux
-)
