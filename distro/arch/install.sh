@@ -1,10 +1,9 @@
 install_live() {
 	mount_iso
-	install -d "$DATADIR/arch"
-	cp -r "$ISOMNT/arch/x86_64" "$DATADIR/arch/"
-	install -d "$KERNELDIR/arch"
-	cp -r "$ISOMNT/arch/boot/x86_64" "$KERNELDIR/arch/"
-	cp "$ISOMNT/arch/boot/intel_ucode.img" "$KERNELDIR/arch/"
+	install -d "$DATADIR/$KEYWORD" "$KERNELDIR/$KEYWORD"
+	cp -r "$ISOMNT/arch/x86_64" "$DATADIR/$KEYWORD/"
+	cp -r "$ISOMNT/arch/boot/x86_64" "$KERNELDIR/$KEYWORD/"
+	cp "$ISOMNT/arch/boot/"*.img "$KERNELDIR/$KEYWORD/"
 	umount_iso
 }
 
