@@ -204,7 +204,7 @@ elif [ "$INSTALL_GRUB" == 1 ]; then
 			msg 'Failed to install syslinux, try to install GRUB as legacy BIOS bootloader.'
 			as-root grub-install --force --boot-directory="$BOOTPATH" --target=i386-pc "$DEVNAME"
 		fi
-		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
+		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=x86_64-efi --force-extra-removable --no-nvram --recheck "$DEVNAME"
 	fi
 fi
 
