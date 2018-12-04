@@ -4,5 +4,6 @@ ISOURL="kali-$_isover/kali-linux-$_isover-amd64.iso"
 SHA1=2dd849a4581d7e528b02250757a632721b6e7995
 
 mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/kali-images
 http://cdimage.kali.org
 )

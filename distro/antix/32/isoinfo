@@ -4,6 +4,7 @@ ISOURL="antiX-${_isover}/antiX-${_isover}_386-full.iso"
 SHA256=47a6909df0b7098960af7e49ff0b45e59a5f358944e0adfb11fe29b026ef19dc
 
 mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/mxlinux-isos/ANTIX/Final
 http://iso.mxrepo.com/Final
 http://it.mxrepo.com/Final
 )
