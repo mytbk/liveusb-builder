@@ -5,7 +5,7 @@
 # Example: ./install_syslinux /dev/sdb /dev/sdb1 /media/boot
 set -e
 
-SYSLINUX_BIOS=/usr/lib/syslinux/bios
+SYSLINUX_BIOS=/usr/lib/syslinux
 DEVNAME="$1"
 BOOTPART="$2"
 BOOTPATH="$3"
@@ -16,6 +16,6 @@ fi
 
 test -d "$SYSLINUX_BIOS"
 syslinux -i "$BOOTPART"
-dd bs=440 count=1 conv=notrunc if="$SYSLINUX_BIOS/mbr.bin" of="$DEVNAME"
+dd bs=440 count=1 conv=notrunc if="$SYSLINUX_BIOS/mbr/mbr.bin" of="$DEVNAME"
 install -d "$BOOTPATH/syslinux"
-cp "$SYSLINUX_BIOS"/*.c32 "$BOOTPATH/syslinux"
+cp "$SYSLINUX_BIOS"/modules/bios/*.c32 "$BOOTPATH/syslinux"
