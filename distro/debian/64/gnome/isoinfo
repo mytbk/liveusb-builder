@@ -1,4 +1,2 @@
+_desktop=GNOME
 source distro/debian/isoinfo.common
-ISONAME="$DISTRONAME $_isover amd64 GNOME"
-ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-gnome-desktop.iso"
-SHA1=3501cb9927f2c5c96aefe98a62957d9db138d2c9
