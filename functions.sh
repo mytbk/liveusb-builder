@@ -13,7 +13,7 @@ checksum_verify() {
 		_hashtool=sha1sum
 		_hashsum=$SHA1
 	elif [ -n "$VERIFY" ]; then
-		"$VERIFY" && return 0
+		"$VERIFY" && return 0 || return 1
 	else
 		fatalerror "Cannot find the SHA256, SHA1, or MD5 checksum of $ISOFILE"
 	fi
