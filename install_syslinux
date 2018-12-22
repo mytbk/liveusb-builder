@@ -5,17 +5,45 @@
 # Example: ./install_syslinux /dev/sdb /dev/sdb1 /media/boot
 set -e
 
-SYSLINUX_BIOS=/usr/lib/syslinux/bios
+mbr_bin_path=(/usr/lib/syslinux/bios /usr/share/syslinux /usr/lib/syslinux/mbr)
+c32_path=(/usr/lib/syslinux/bios /usr/share/syslinux /usr/lib/syslinux/modules/bios)
+
+MBR_PATH=""
+C32_PATH=""
+
+for path in "${mbr_bin_path[@]}"
+do
+	if test -f "$path/mbr.bin"
+	then
+		MBR_PATH="$path"
+		break
+	fi
+done
+
+if test -z "$MBR_PATH"
+then
+	exit 1
+fi
+
+for path in "${c32_path[@]}"
+do
+	if test -f "$path/linux.c32"
+	then
+		C32_PATH="$path"
+		break
+	fi
+done
+
+if test -z "$C32_PATH"
+then
+	exit 1
+fi
+
 DEVNAME="$1"
 BOOTPART="$2"
 BOOTPATH="$3"
 
-if [ ! -d "$SYSLINUX_BIOS" ]; then
-	SYSLINUX_BIOS=/usr/share/syslinux
-fi
-
-test -d "$SYSLINUX_BIOS"
 syslinux -i "$BOOTPART"
-dd bs=440 count=1 conv=notrunc if="$SYSLINUX_BIOS/mbr.bin" of="$DEVNAME"
+dd bs=440 count=1 conv=notrunc if="$MBR_PATH/mbr.bin" of="$DEVNAME"
 install -d "$BOOTPATH/syslinux"
-cp "$SYSLINUX_BIOS"/*.c32 "$BOOTPATH/syslinux"
+cp "$C32_PATH"/*.c32 "$BOOTPATH/syslinux"
