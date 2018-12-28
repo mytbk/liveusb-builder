@@ -25,6 +25,20 @@ checksum_verify() {
 	fi
 }
 
+# a hash verify function that uses a checksum file
+# usage: set HASHTOOL and HASHFILE in isoinfo, set VERIFY as hashfile
+hashfile() {
+	local _cksum _hashsum
+	_cksum=$("$HASHTOOL" "$ISOPATH/$ISOFILE" | cut -d' ' -f1)
+	_hashsum=$(grep "${ISOFILE}\$" "$HASHFILE" | cut -d' ' -f1)
+
+	if [[ $_cksum == $_hashsum ]]; then
+		msg "$ISOFILE ok."
+	else
+		msg "$ISOFILE checksum bad!" && return 1
+	fi
+}
+
 set_distro() {
 	_distrobase="distro/$(cut -d'/' -f1 <<< "$1")"
 	source "$_distrobase/distroinfo"

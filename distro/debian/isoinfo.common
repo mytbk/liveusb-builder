@@ -2,20 +2,10 @@ _isover=9.6.0
 
 ISONAME="$DISTRONAME $_isover amd64 ${_desktop}"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-${_desktop,,}.iso"
-VERIFY=sha512chk
+HASHTOOL=sha512sum
+HASHFILE=distro/debian/SHA512SUMS
+VERIFY=hashfile
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/debian-cd
 http://mirrors.ustc.edu.cn/debian-cd
 )
-
-sha512chk() {
-	local _cksum _hashsum
-	_cksum=$(sha512sum "$ISOPATH/$ISOFILE" | cut -d' ' -f1)
-	_hashsum=$(grep "${ISOFILE}\$" distro/debian/SHA512SUMS | cut -d' ' -f1)
-
-	if [[ $_cksum == $_hashsum ]]; then
-		msg "$ISOFILE ok."
-	else
-		msg "$ISOFILE checksum bad!" && return 1
-	fi
-}
