@@ -1,4 +1,8 @@
-_isover=19
+_isover=19.1
+
+HASHTOOL=sha256sum
+HASHFILE=distro/mint/sha256sum.txt
+VERIFY=hashfile
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd
