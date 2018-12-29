@@ -1,7 +1,7 @@
-_isover=17
+_isover=17.3.1
 ISONAME="$DISTRONAME $_isover i386"
-ISOURL="antiX-${_isover}/antiX-${_isover}_386-full.iso"
-SHA256=47a6909df0b7098960af7e49ff0b45e59a5f358944e0adfb11fe29b026ef19dc
+ISOURL="antiX-17.3/antiX-${_isover}_386-full.iso"
+SHA256=83725c5ae05bad42921d0d1940ef098ade38fbad6b594c651306330fc072f6c4
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/mxlinux-isos/ANTIX/Final
