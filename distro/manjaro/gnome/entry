@@ -1,0 +1,3 @@
+_arch=x86_64
+_flavour=GNOME
+source distro/manjaro/entry
