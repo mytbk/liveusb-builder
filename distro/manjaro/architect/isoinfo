@@ -1,0 +1,9 @@
+_isodate=18.0
+
+ISONAME="$DISTRONAME x86_64 $_isodate ARCHITECT"
+ISOURL=manjaro-architect-${_isodate}-stable-x86_64.iso
+SHA256=44363436c53fe536c82aeaa65e1afea44cb5091d4817f424fd96b061566090b7
+
+mirrorlist=(
+http://osdn.dl.osdn.jp/storage/g/m/ma/manjaro/architect/18.0
+)
