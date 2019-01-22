@@ -23,7 +23,7 @@ First mount your USB drive partition. I recommend using udevil so that you can w
 
 Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1 is mount to /media/sdb1:
 
-```
+```bash
 # install Arch, Mint (x86_64 with MATE Desktop) and Fedora 28 to USB
 ./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora/28
 ```
