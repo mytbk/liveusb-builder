@@ -163,6 +163,8 @@ syslinux_header() {
 	cat << EOF
 UI menu.c32
 
+TIMEOUT 50
+
 MENU TITLE Live USB
 MENU COLOR border       30;44   #40ffffff #a0000000 std
 MENU COLOR title        1;36;44 #9033ccff #a0000000 std
@@ -178,10 +180,10 @@ EOF
 }
 
 grubcfg_header() {
-	echo '# The live USB grub.cfg file'
-
-	if [ -z "$TXTMODE" ]; then
 		cat  << 'EOF'
+set default=0
+set timeout=5
+
 if [ ${grub_platform} == efi ]; then
 	insmod all_video
 	insmod font
@@ -194,5 +196,4 @@ if [ ${grub_platform} == efi ]; then
 fi
 
 EOF
-	fi
 }
