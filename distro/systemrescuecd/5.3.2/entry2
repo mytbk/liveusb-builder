@@ -1,4 +1,4 @@
-TITLE='SystemRescueCd i686'
+TITLE='SystemRescueCd 5.3.2 i686'
 KERNEL=/liveusb-kernel/sysrcd/rescue32
 INITRD=/liveusb-kernel/sysrcd/initram.igz
 OPTION="subdir=liveusb-data/sysrcd"
