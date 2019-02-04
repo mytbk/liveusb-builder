@@ -1,0 +1,4 @@
+TITLE="Linux Mint Debian Edition x86_64"
+KERNEL="/liveusb-kernel/mint/lmde/64/vmlinuz"
+INITRD="/liveusb-kernel/mint/lmde/64/initrd.lz"
+OPTION="boot=live live-config findiso=liveusb-data/mint/$ISOFILE quiet splash --"
