@@ -1,0 +1,8 @@
+ver=2018.12
+ISONAME="Grml $ver 64-bit full"
+ISOURL="grml64-full_$ver.iso"
+SHA256=33617aba115ccb6f99bd59406ebe04ffdc0b9ac15a997c0bd3800b8ad6c7dc91
+
+mirrorlist=(
+http://download.grml.org
+)

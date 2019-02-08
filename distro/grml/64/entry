@@ -1,0 +1,6 @@
+ver=2018.12
+TITLE="Grml $ver 64-bit full"
+KERNEL=/liveusb-kernel/grml/64/vmlinuz
+INITRD=/liveusb-kernel/grml/64/initrd.img
+OPTION="boot=live findiso=liveusb-data/grml/$ISOFILE live-media-path=/live/grml64-full/ ignore_bootid iomem=relaxed"
+X64=y
