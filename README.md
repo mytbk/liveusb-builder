@@ -4,6 +4,13 @@ liveusb-builder is a script suite to create multiboot USB stick for GNU/Linux di
 
 The source code is hosted on both [git.wehack.space](https://git.wehack.space/liveusb-builder/) and GitHub.
 
+## Features
+
+- Multiboot support with syslinux and GRUB
+- Support placing kernel files (kernel and initramfs) and other data files (squashfs, CD image) in separate partitions
+- Download an up-to-date CD image and verify it
+- A GNU/Linux command line tool
+
 ## Install
 
 You need these packages on your GNU/Linux system to use liveusb-builder.
@@ -109,8 +116,8 @@ The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libre
 
 You can search keyword ``multiboot`` on GitHub and find some related projects. Listed below is some related work I know or find.
 
-- [Yumi](https://www.pendrivelinux.com/yumi-multiboot-usb-creator/)
-- [aguslr/multibootusb](https://github.com/aguslr/multibootusb)
+- [Yumi](https://www.pendrivelinux.com/yumi-multiboot-usb-creator/): a Windows GUI multiboot USB builder, I need a similar tool that runs on GNU/Linux, so I created this project
+- [aguslr/multibootusb](https://github.com/aguslr/multibootusb): provides grub.cfg files for many CD images, I used some of the kernel command line of distros in this project, but some grub.cfg files use features provided by GRUB and thus not portable for loaders like syslinux
 - [MultiBootLiveUSB](https://github.com/moontide/MultiBootLiveUSB)
 - [Multiboot USB drive - ArchWiki](https://wiki.archlinux.org/index.php/Multiboot_USB_drive)
 - [cbodden/multiboot](https://github.com/cbodden/multiboot)
