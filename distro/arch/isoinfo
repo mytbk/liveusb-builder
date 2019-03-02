@@ -1,7 +1,7 @@
-_isodate=2019.02.01
+_isodate=2019.03.01
 ISONAME="$DISTRONAME $_isodate"
 ISOURL=iso/$_isodate/archlinux-$_isodate-x86_64.iso
-SHA1=fd4adb6c92d63500a492de53753091f072036333
+SHA1=e32acb5a7b7cfb2bdba10697cce48ab69e13c186
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/archlinux
