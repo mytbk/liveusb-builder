@@ -1,9 +1,6 @@
-_isodate=18.0
+source distro/manjaro/isoinfo.common
+_isodate=18.0.2
 
 ISONAME="$DISTRONAME x86_64 $_isodate ARCHITECT"
 ISOURL=manjaro-architect-${_isodate}-stable-x86_64.iso
-SHA256=44363436c53fe536c82aeaa65e1afea44cb5091d4817f424fd96b061566090b7
-
-mirrorlist=(
-http://osdn.dl.osdn.jp/storage/g/m/ma/manjaro/architect/18.0
-)
+SHA256=1c2d1500009c87816ead28cbeb29c7838ed46e2a99ffe24c14e0757d73c772f8

@@ -1,4 +1,4 @@
 source distro/manjaro/isoinfo.common
 ISONAME="$DISTRONAME x86_64 $_isodate GNOME"
 ISOURL=manjaro-gnome-${_isodate}-stable-x86_64.iso
-SHA256=6bf32f861b339b552a5addc6bb664f7c4e5239de5dc34b0782cb292ceda32da3
+SHA256=2508ab505fde630496a868d468007ca46aaca4c2223223512b0e9f3138fdb31f
