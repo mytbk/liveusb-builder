@@ -4,6 +4,8 @@ liveusb-builder is a script suite to create multiboot USB stick for GNU/Linux di
 
 The source code is hosted on both [git.wehack.space](https://git.wehack.space/liveusb-builder/) and GitHub.
 
+A presentation in Chinese is at https://wehack.space/vimacs/liveusb-builder.odp.
+
 ## Features
 
 - Multiboot support with syslinux and GRUB
@@ -32,7 +34,7 @@ Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1
 
 ```bash
 # install Arch, Mint (x86_64 with MATE Desktop) and Fedora 28 to USB
-./buildlive --root=/media/sdb1 --dev=/dev/sdb arch mint/64/mate fedora/28
+./buildlive --root=/media/sdb1 arch mint/64/mate fedora/28
 ```
 
 ### The more customizable way: using a FAT32 boot partition and an ext2 data partition
