@@ -48,8 +48,13 @@ try_mount() {
 	local mnt
 	if [[ "$1" =~ ^/dev ]]
 	then
-		mnt=$(mktemp -u /media/buildlive.XXXXXX)
-		udevil mount "$1" "$mnt" > /dev/null
+		if ! findmnt "$1" > /dev/null
+		then
+			udevil mount "$1" > /dev/null
+			mnt=$(findmnt -n -o TARGET "$1")
+		else
+			mnt=$(findmnt -n -o TARGET "$1")
+		fi
 	else
 		mnt="$1"
 	fi
