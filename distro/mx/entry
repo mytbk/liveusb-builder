@@ -1,0 +1,13 @@
+if [ "$X64" = n ]; then
+	BITS=32
+	ARCH_STR="i386"
+else
+	BITS=64
+	ARCH_STR="x86_64"
+	X64=y
+fi
+TITLE="MX Linux 18 $ARCH_STR"
+KERNEL="/liveusb-kernel/$KEYWORD/$BITS/vmlinuz"
+INITRD="/liveusb-kernel/$KEYWORD/$BITS/initrd.gz"
+# from aguslr/multibootusb
+OPTION="from=hd,usb root=UUID=$UUID fromiso=liveusb-data/$KEYWORD/$ISOFILE"
