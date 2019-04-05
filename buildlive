@@ -16,6 +16,7 @@ GRUBCFG_ONLY=0
 DOWNLOAD_ONLY=0
 UMOUNT_BOOT=0
 UMOUNT_ROOT=0
+CLEAN_USB=0
 
 . functions.sh
 
@@ -37,6 +38,7 @@ options:
   --root=<path>: set the path to put the live USB data files
   --boot <path>
   --boot=<path>: set the path to put the kernel and loader files
+  --clean: clean the old live USB files before installing
   --no-grub: do not install GRUB loader (still generate grub.cfg)
   --grubcfg: do not do real install, only generate grub.cfg file
   --downloadonly: only download the ISO files
@@ -97,6 +99,9 @@ do
 			;;
 		--downloadonly)
 			DOWNLOAD_ONLY=1
+			;;
+		--clean)
+			CLEAN_USB=1
 			;;
 		*=*|-*)
 			usage
@@ -160,6 +165,11 @@ fi
 
 if [ ! -z "$DEVNAME" ]; then
 	msg "Boot sector will be written to $DEVNAME"
+fi
+
+if [[ "$CLEAN_USB" = 1 ]]; then
+	msg "Cleaning old live USB files."
+	rm -rf "$KERNELDIR"/* "$DATADIR"/*
 fi
 
 for i in ${DISTROLIST[@]}
