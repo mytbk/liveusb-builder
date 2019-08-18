@@ -1,0 +1,9 @@
+_isover=15.11
+ISONAME="$DISTRONAME ${_isover} amd64"
+ISOURL="${_isover}/deepin-${_isover}-amd64.iso"
+SHA256=3b61802d83ec40c5c32eb6719ea641de75b8fa72b5e8bced48429172bc53f0f7
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/deepin-cd
+http://cdimage.deepin.com/releases
+)
