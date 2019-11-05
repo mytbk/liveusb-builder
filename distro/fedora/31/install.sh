@@ -1,2 +1,2 @@
-version=28
+version=31
 source distro/fedora/install.sh

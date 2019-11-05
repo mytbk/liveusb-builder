@@ -1,6 +1,6 @@
 ISONAME="PureOS"
-ISOURL=live/gnome/2019-02-10/pureos-8.0-gnome-live_20190210-amd64.hybrid.iso
-SHA256=017b73ebf39a626d6ff61b5647eefcd174b33f189eea32fd16765c3860499c45
+ISOURL=live/gnome/2019-09-26/pureos-9.0-gnome-live_20190926-amd64.hybrid.iso
+SHA256=11e546dd3bc4e8316f183728192b57a96b6ccb3fd27cdf964b8abcfd61f41e7c
 
 mirrorlist=(
 https://downloads.puri.sm

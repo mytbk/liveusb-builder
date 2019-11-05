@@ -1,0 +1,7 @@
+ISONAME="$DISTRONAME 8 DVD"
+ISOURL=8/isos/x86_64/CentOS-8-x86_64-1905-dvd1.iso
+SHA256=ea17ef71e0df3f6bf1d4bf1fc25bec1a76d1f211c115d39618fe688be34503e8
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/centos
+)

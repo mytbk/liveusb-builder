@@ -1,7 +1,7 @@
-_isover=2019.2
+_isover=2019.3
 ISONAME="$DISTRONAME $_isover amd64"
 ISOURL="kali-$_isover/kali-linux-$_isover-amd64.iso"
-SHA256=67574ee0039eaf4043a237e7c4b0eb432ca07ebf9c7b2dd0667e83bc3900b2cf
+SHA256=d9bc23ad1ed2af7f0170dc6d15aec58be2f1a0a5be6751ce067654b753ef7020
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/kali-images
