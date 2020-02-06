@@ -1,6 +1,6 @@
 ISONAME="$DISTRONAME 7 DVD"
-ISOURL=7/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso
-SHA256=6d44331cc4f6c506c7bbe9feb8468fad6c51a88ca1393ca6b8b486ea04bec3c1
+ISOURL=7/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso
+SHA256=9bba3da2876cb9fcf6c28fb636bcbd01832fe6d84cd7445fa58e44e569b3b4fe
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/centos

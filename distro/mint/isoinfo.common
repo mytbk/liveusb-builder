@@ -1,4 +1,4 @@
-_isover=19.2
+_isover=19.3
 
 HASHTOOL=sha256sum
 HASHFILE=distro/mint/sha256sum.txt
