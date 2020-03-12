@@ -1,10 +1,5 @@
-_isover=18.3
-ISONAME="$DISTRONAME Linux $_isover i386"
-ISOURL="MX-${_isover}/MX-${_isover}_386.iso"
-SHA256=1476470c3b0797b466b91a0eef327290b30e65dc345c68c4c7334c3e8c688651
+source distro/mx/isoinfo.common
 
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/mxlinux-isos/MX/Final
-http://iso.mxrepo.com/Downloads/Final
-http://it.mxrepo.com/Final
-)
+ISONAME="$DISTRONAME Linux $_isover i386"
+ISOURL="MX-${_isover}_386.iso"
+SHA256=78b503114f77d27405feb15e9a2a16ce9e83a745c28d7ec95db98b7e3fbf1d68

@@ -1,0 +1,7 @@
+_isover=19.1
+
+mirrorlist=(
+https://mirrors.tuna.tsinghua.edu.cn/mxlinux-isos/MX/Final
+http://iso.mxrepo.com/Downloads/Final/MX-${_isover}
+http://it.mxrepo.com/Final/MX-${_isover}
+)
