@@ -1,6 +1,6 @@
 ISONAME="$DISTRONAME Debian Edition"
-ISOURL=debian/lmde-3-201808-cinnamon-64bit.iso
-SHA256=90c15a08829366f7cc47b92a9520edca99a3b02979d008685a54e6db4d29cff3
+ISOURL=debian/lmde-4-cinnamon-64bit.iso
+SHA256=fb6fb4f507f1de979a8922f9e503ae0ad8109e87ea1a9a163a6b30f819971256
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/linuxmint-cd

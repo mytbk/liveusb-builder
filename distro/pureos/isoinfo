@@ -1,7 +1,8 @@
-ISONAME="PureOS"
-ISOURL=live/gnome/2019-09-26/pureos-9.0-gnome-live_20190926-amd64.hybrid.iso
-SHA256=11e546dd3bc4e8316f183728192b57a96b6ccb3fd27cdf964b8abcfd61f41e7c
+ISONAME="PureOS GNOME 2020.03.04"
+ISOURL=gnome/2020-03-04/pureos-9.0-gnome-live_20200304-amd64.hybrid.iso
+SHA256=6ced66a33fa22dfdcc4a445b517ef4168ab559009bb834b2b74a64a78473c6ce
 
 mirrorlist=(
-https://downloads.puri.sm
+https://downloads.puri.sm/amber/live
+http://downloads.pureos.net/amber/live
 )
