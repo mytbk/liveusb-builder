@@ -1,7 +1,7 @@
-_isover=milky-way-v0.3
-ISONAME='Hyperbola Milky Way v0.3'
+_isover=milky-way-v0.3.1
+ISONAME='Hyperbola Milky Way v0.3.1'
 ISOURL=other/live_images/gnu-plus-linux-libre/hyperbola-${_isover}/hyperbola-${_isover}-dual.iso
-SHA512=4cc3563e513cb711cf54843819e5a69318633a432f013bd49780822644a7d76e7bf2400d8ba220c0bfff83582b774f0bfa182127410c2dd9d494752fb0ba6287
+SHA512=9e098157025fecaa313e5a878d993952c88417dfa78c3a9885d2cae54f4a00e1062b75eb9dc38b356f389ec68ccb6d12c40e41a2a31ae563273938889efa498c
 
 mirrorlist=(
 https://mirror.cedia.org.ec/hyperbola/sources
