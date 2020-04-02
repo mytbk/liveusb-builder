@@ -1,7 +1,7 @@
-_isover=6.0.3
+_isover=6.1.2
 ISONAME="$DISTRONAME $_isover"
-ISOURL=$_isover/systemrescuecd-$_isover.iso
-SHA256=750382a087a2629b761fb96203b042aac6f9794401bffb9734af793d25d064e3
+ISOURL=$_isover/systemrescuecd-amd64-$_isover.iso
+SHA256=1e9e289e8028af7ec12f3244e40fcd28104cdce05d3c2283e1c00eafe2c7e80c
 
 mirrorlist=(
 https://osdn.net/projects/systemrescuecd/storage/releases

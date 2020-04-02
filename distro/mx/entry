@@ -6,7 +6,7 @@ else
 	ARCH_STR="x86_64"
 	X64=y
 fi
-TITLE="MX Linux 18 $ARCH_STR"
+TITLE="MX Linux 19.1 $ARCH_STR"
 KERNEL="/liveusb-kernel/$KEYWORD/$BITS/vmlinuz"
 INITRD="/liveusb-kernel/$KEYWORD/$BITS/initrd.gz"
 # from aguslr/multibootusb
