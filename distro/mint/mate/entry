@@ -1,4 +1,4 @@
 _arch=x86_64
-_ver=19
-_de=Cinnamon
+_ver=20
+_de=MATE
 source distro/mint/entry.common

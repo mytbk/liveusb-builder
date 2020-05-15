@@ -1,6 +1,3 @@
-f1e0469b220b318151bf5c9515380705ddc5d4f59dd0f1af6e78fea599f05e4a *linuxmint-19.3-cinnamon-32bit.iso
-7a9e54212433c8547edfd789ac933c91a9bde1a61196fa7977c5357a2c40292d *linuxmint-19.3-cinnamon-64bit.iso
-9d302939a07205383231c2e41f3712b2cea7f1bff0470eed2d16f6c6ef0abc0a *linuxmint-19.3-mate-32bit.iso
-610385bd480d4f906774d865761c429bccc522cf9dd62a5928045fac8fa24bf6 *linuxmint-19.3-mate-64bit.iso
-9daafa1d804fd34e5cd42dab919bbe43b7e94eefa2669398dc73b43c6616d206 *linuxmint-19.3-xfce-32bit.iso
-30c509d062da0f754765b5ecba861486d1f3d6138fdcec6f70f5feb88b72e4ef *linuxmint-19.3-xfce-64bit.iso
+2f6ae466ec9b7c6255e997b82f162ae88bfe640a8df16d3e2f495b6281120af9 *linuxmint-20-cinnamon-64bit.iso
+42fd764b3a3544a36d820f4164bb64aa5a6d982073e6d1afdea4853d3858fc98 *linuxmint-20-mate-64bit.iso
+761fb276da9746a068f4c8aa42e8d4981f352db92babe0ef8a08713eeb38246f *linuxmint-20-xfce-64bit.iso

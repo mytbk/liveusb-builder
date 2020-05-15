@@ -4,7 +4,8 @@ ISOURL=other/live_images/gnu-plus-linux-libre/hyperbola-${_isover}/hyperbola-${_
 SHA512=9e098157025fecaa313e5a878d993952c88417dfa78c3a9885d2cae54f4a00e1062b75eb9dc38b356f389ec68ccb6d12c40e41a2a31ae563273938889efa498c
 
 mirrorlist=(
-https://mirror.cedia.org.ec/hyperbola/sources
+https://mirror.fsf.org/hyperbola/sources
 https://repo.hyperbola.info:50000
+https://mirror.cedia.org.ec/hyperbola/sources
 https://ftp.nluug.nl/os/Linux/distr/hyperbola/sources
 )

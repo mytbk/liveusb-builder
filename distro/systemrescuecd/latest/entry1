@@ -1,7 +1,7 @@
-TITLE='SystemRescueCd 6.0.3 x86_64'
+TITLE='SystemRescueCd 6.1.5 x86_64'
 KERNEL=/liveusb-kernel/$KEYWORD/x86_64/vmlinuz
 INITRD=(/liveusb-kernel/$KEYWORD/intel_ucode.img
 		/liveusb-kernel/$KEYWORD/amd_ucode.img
 		/liveusb-kernel/$KEYWORD/x86_64/sysresccd.img)
-OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/$KEYWORD"
+OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/$KEYWORD iomem=relaxed"
 X64=y

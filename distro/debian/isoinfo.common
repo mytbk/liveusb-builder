@@ -1,4 +1,4 @@
-_isover=10.3.0
+_isover=10.4.0
 
 ISONAME="$DISTRONAME $_isover amd64 ${_desktop}"
 ISOURL="${_isover}-live/amd64/iso-hybrid/debian-live-${_isover}-amd64-${_desktop,,}.iso"

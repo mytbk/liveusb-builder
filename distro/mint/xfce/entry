@@ -1,4 +1,4 @@
 _arch=x86_64
-_ver=19
-_de=MATE
+_ver=20
+_de=Xfce
 source distro/mint/entry.common

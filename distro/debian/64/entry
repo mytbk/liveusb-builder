@@ -1,5 +1,5 @@
-TITLE="Debian 9.8.0 AMD64 ${_desktop}"
-KERNEL=/liveusb-kernel/debian/64/vmlinuz-4.19.0-8-amd64
-INITRD=/liveusb-kernel/debian/64/initrd.img-4.19.0-8-amd64
+TITLE="Debian 10.4.0 AMD64 ${_desktop}"
+KERNEL=/liveusb-kernel/debian/64/vmlinuz-4.19.0-9-amd64
+INITRD=/liveusb-kernel/debian/64/initrd.img-4.19.0-9-amd64
 OPTION="boot=live findiso=liveusb-data/debian/$ISOFILE"
 X64=y

@@ -1,7 +1,7 @@
-ver=2018.12
+ver=2020.06
 ISONAME="Grml $ver 64-bit full"
 ISOURL="grml64-full_$ver.iso"
-SHA256=33617aba115ccb6f99bd59406ebe04ffdc0b9ac15a997c0bd3800b8ad6c7dc91
+SHA256=a6d8f82f020e33e13ddf71978234a4168506b1dd89c91ce4ebc13ef86025039f
 
 mirrorlist=(
 http://download.grml.org
