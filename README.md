@@ -29,7 +29,7 @@ For Arch Linux users, just install [liveusb-builder-git](https://aur.archlinux.o
 
 liveusb-builder needs a kernel image, an initramfs image, and a proper kernel command line to support a boot image. However, not every CD/DVD image supports booting this way. There are some other ways to boot these images, but they will break our philosophy to support various firmware and bootloaders.
 
-If you want to use a disk image to install an operating system, I suggest using the virtual machine method as follows. Boot an AMD64 machine with enough memory and VMX feature with a Live USB with QEMU GUI (e.g. Grml 2020.06, also see [my ticket](https://github.com/grml/grml-live/issues/71) for Grml) after attaching the hard disk you want to install the OS on, then run the following (assume you want to install your system on /dev/sda):
+If you want to use a disk image to install an operating system, I suggest using the virtual machine method as follows. Boot an AMD64 machine with enough memory and VMX feature with a Live USB with QEMU GUI (e.g. Grml 2020.06, also see [my ticket](https://github.com/grml/grml-live/issues/71) for Grml) after attaching the hard disk you want to install the OS on, then run the following (assume the hard disk attached is /dev/sda):
 
 ```bash
 sudo qemu-system-x86_64 -enable-kvm -m 4G -cdrom your-install-cd.iso -drive /dev/sda,format=raw -boot order=d -no-reboot
@@ -135,6 +135,7 @@ You can search keyword ``multiboot`` on GitHub and find some related projects. L
 
 - [Yumi](https://www.pendrivelinux.com/yumi-multiboot-usb-creator/): a Windows GUI multiboot USB builder, I need a similar tool that runs on GNU/Linux, so I created this project
 - [aguslr/multibootusb](https://github.com/aguslr/multibootusb): provides grub.cfg files for many CD images, I used some of the kernel command line of distros in this project, but some grub.cfg files use features provided by GRUB and thus not portable for loaders like syslinux
+- [Ventoy](https://www.ventoy.net): a new multiboot USB project that supports making a live USB with most of the CD images. It has its own boot loader so doesn't rely on GRUB or syslinux config files.
 - [MultiBootLiveUSB](https://github.com/moontide/MultiBootLiveUSB)
 - [Multiboot USB drive - ArchWiki](https://wiki.archlinux.org/index.php/Multiboot_USB_drive)
 - [cbodden/multiboot](https://github.com/cbodden/multiboot)
