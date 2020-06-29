@@ -61,6 +61,45 @@ process_distro() {
 	# ISOMNT="/media/$ISOFILE"
 }
 
+# output_grub_entry
+# output_syslinux_entry
+# usage: first source the entry, then call this
+#
+# variables in entryfile:
+# - UUID: the UUID of the partition
+# - ISOFILE: the file name of iso
+#
+# parameters in entry file:
+# - TITLE: GRUB menu entry title
+# - KERNEL: path to kernel image
+# - INITRD: path to initramfs/initrd image
+# - OPTION: kernel command line
+# - X64: y/n, indicates whether it's 64-bit
+#
+output_grub_entry() {
+	cat << EOF
+menuentry '$TITLE' {
+	linux $KERNEL $OPTION
+	initrd ${INITRD[@]}
+}
+
+EOF
+}
+
+# we also need $LABEL when calling this
+output_syslinux_entry() {
+	_INITRD=$(echo ${INITRD[*]}|sed 's/ /,/g')
+
+	cat << EOF
+LABEL $LABEL
+MENU LABEL $TITLE
+LINUX $KERNEL
+INITRD $_INITRD
+APPEND $OPTION
+
+EOF
+}
+
 gen_grubcfg() {
 	local entry allentries
 	allentries=("distro/$1/entry"*)
@@ -69,11 +108,42 @@ gen_grubcfg() {
 	fi
 	for entry in "${allentries[@]}"
 	do
-		UUID="$UUID" ISOFILE="$ISOFILE" ./mkgrubcfg.sh "$entry"
+		source "$entry"
+		UUID="$UUID" ISOFILE="$ISOFILE" output_grub_entry
 	done
 	if [ ${#allentries[@]} -gt 1 ]; then
 		echo '}'
 	fi
+}
+
+meta_gen_grubcfg() {
+	local entry
+	source "distro/$1/meta"
+	if [ ${#entries[@]} -gt 1 ]; then
+		echo "submenu '$ISONAME' {"
+	fi
+	for entry in "${entries[@]}"
+	do
+		"$entry"
+		UUID="$UUID" ISOFILE="$ISOFILE" output_grub_entry
+	done
+	if [ ${#entries[@]} -gt 1 ]; then
+		echo '}'
+	fi
+}
+
+meta_gen_syslinux() {
+	local entry count name
+	source "distro/$1/meta"
+	name=$(echo $1|sed 's/\//_/g')
+	count=0
+	for entry in "${entries[@]}"
+	do
+		"$entry"
+		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="${name}_${count}" \
+			output_syslinux_entry
+		count=$(($count+1))
+	done
 }
 
 gen_syslinux() {
@@ -83,8 +153,9 @@ gen_syslinux() {
 	count=0
 	for entry in "${allentries[@]}"
 	do
-		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="$name$count" \
-			./mksyslinux.sh "$entry"
+		source "$entry"
+		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="${name}_${count}" \
+			output_syslinux_entry
 		count=$(($count+1))
 	done
 }
