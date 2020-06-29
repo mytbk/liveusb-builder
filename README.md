@@ -9,6 +9,7 @@ A presentation in Chinese is at https://wehack.space/vimacs/liveusb-builder.odp.
 ## Features
 
 - Multiboot support with syslinux and GRUB
+- Support legacy BIOS, UEFI, and various firmware payloads (e.g. GRUB, petitboot) that reads GRUB or syslinux config files
 - Support placing kernel files (kernel and initramfs) and other data files (squashfs, CD image) in separate partitions
 - Download an up-to-date CD image and verify it
 - A GNU/Linux command line tool
@@ -20,9 +21,23 @@ You need these packages on your GNU/Linux system to use liveusb-builder.
 - udevil: for mounting iso files
 - wget: for downloading
 - syslinux (recommended): bootloader for legacy BIOS
-- GRUB: bootloader for leagacy BIOS if there's no syslinux,  and bootloader for UEFI
+- GRUB: bootloader for leagacy BIOS if there's no syslinux, and bootloader for UEFI
 
 For Arch Linux users, just install [liveusb-builder-git](https://aur.archlinux.org/packages/liveusb-builder-git/) from AUR.
+
+## Will my boot image support liveusb-builder?
+
+liveusb-builder needs a kernel image, an initramfs image, and a proper kernel command line to support a boot image. However, not every CD/DVD image supports booting this way. There are some other ways to boot these images, but they will break our philosophy to support various firmware and bootloaders.
+
+If you want to use a disk image to install an operating system, I suggest using the virtual machine method as follows. Boot an AMD64 machine with enough memory and VMX feature with a Live USB with QEMU GUI (e.g. Grml 2020.06, also see [my ticket](https://github.com/grml/grml-live/issues/71) for Grml) after attaching the hard disk you want to install the OS on, then run the following (assume you want to install your system on /dev/sda):
+
+```bash
+sudo qemu-system-x86_64 -enable-kvm -m 4G -cdrom your-install-cd.iso -drive /dev/sda,format=raw -boot order=d -no-reboot
+```
+
+Do the system installation in the QEMU window. After QEMU exits, put the hard disk on the target machine to continue installing.
+
+I've already used this method to successfully install Windows 7, OpenBSD 6.7, and various GNU/Linux systems.
 
 ## Usage
 
@@ -33,8 +48,8 @@ First mount your USB drive partition. I recommend using udevil so that you can w
 Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1 is mount to /media/sdb1:
 
 ```bash
-# install Arch, Mint (x86_64 with MATE Desktop) and Fedora 28 to USB
-./buildlive --root=/media/sdb1 arch mint/64/mate fedora/28
+# install Arch, Mint (x86_64 with MATE Desktop) and Fedora 32 to USB
+./buildlive --root=/media/sdb1 arch mint/mate fedora/32
 ```
 
 ### The more customizable way: using a FAT32 boot partition and an ext2 data partition
@@ -104,10 +119,10 @@ sudo install -d /media/root/liveusb-data
 sudo chown $(whoami) /media/root/liveusb-data/
 ```
 
-At last, make the Live USB (we install Arch and Fedora 28 in it):
+At last, make the Live USB (we install Arch and Fedora 32 in it):
 
 ```
-$ ./buildlive --boot /media/boot --root /media/root arch fedora/28
+$ ./buildlive --boot /media/boot --root /media/root arch fedora/32
 ```
 
 ## Status
