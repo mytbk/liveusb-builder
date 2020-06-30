@@ -227,7 +227,7 @@ if [ "$UMOUNT_BOOT" == 1 ]; then
 	msg 'Trying to umount the boot mountpoint, you may need to wait for sync() to complete.'
 	udevil umount "$BOOTPATH"
 fi
-if [ "$UMOUNT_ROOT" == 1 ]; then
+if [ "$UMOUNT_ROOT" == 1 -a "$ROOTPATH" != "$BOOTPATH" ]; then
 	msg 'Trying to umount the root mountpoint, you may need to wait for sync() to complete.'
 	udevil umount "$ROOTPATH"
 fi
