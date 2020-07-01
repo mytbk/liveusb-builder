@@ -109,6 +109,12 @@ download_iso() {
 	fatalerror "Fail to download $ISOFILE!"
 }
 
+get_iso_label() {
+	# the label of an ISO file is between two quote symbols
+	# of the file(1) output
+	file -b "$1" | cut -d\' -f2
+}
+
 mount_iso() {
 	LOOPDEV=$(/sbin/losetup -n -O NAME -j "${ISO_FILEPATH}")
 	if [[ -n "$LOOPDEV" ]]
