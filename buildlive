@@ -197,6 +197,7 @@ do
 	ISOFILE="${ISOLIST[$i-1]}"
 	ISONAME="${ISONAMELIST[$i-1]}"
 	DISTRO="${DISTROLIST[$i-1]}"
+	ISO_FILEPATH="$ISOPATH/$ISOFILE"
 
 	set_distro "$DISTRO"
 	export DISTRONAME KEYWORD # for grub and syslinux generation

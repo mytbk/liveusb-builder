@@ -4,5 +4,5 @@ install_live() {
 	cp "$ISOMNT/boot/x86_64/loader"/{linux,initrd} \
 		"$KERNELDIR/opensuse/$version"
 	umount_iso
-	cp "$ISOPATH/$ISOFILE" "$DATADIR/opensuse/"
+	cp "${ISO_FILEPATH}" "$DATADIR/opensuse/"
 }

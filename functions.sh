@@ -110,15 +110,15 @@ download_iso() {
 }
 
 mount_iso() {
-	LOOPDEV=$(/sbin/losetup -n -O NAME -j "$ISOPATH/$ISOFILE")
+	LOOPDEV=$(/sbin/losetup -n -O NAME -j "${ISO_FILEPATH}")
 	if [[ -n "$LOOPDEV" ]]
 	then
 		ISOMNT="$LOOPDEV"
 		umount_iso
 	fi
 
-	udevil mount "$ISOPATH/$ISOFILE"
-	LOOPDEV=$(/sbin/losetup -n -O NAME -j "$ISOPATH/$ISOFILE")
+	udevil mount "${ISO_FILEPATH}"
+	LOOPDEV=$(/sbin/losetup -n -O NAME -j "${ISO_FILEPATH}")
 	if [[ -n "$LOOPDEV" ]]
 	then
 		ISOMNT=$(findmnt -n -o TARGET "$LOOPDEV")
