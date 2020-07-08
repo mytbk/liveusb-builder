@@ -1,0 +1,20 @@
+entry() {
+	isofn="$(basename "$ISOFILE")"
+	label="$(get_iso_label "${ISO_FILEPATH}")"
+	TITLE="$label"
+	KERNEL=/liveusb-kernel/$KEYWORD/linux
+	INITRD=/liveusb-kernel/$KEYWORD/initrd
+	OPTION="root=live:CDLABEL=$label iso-scan/filename=liveusb-data/$KEYWORD/$isofn"
+	X64=y
+}
+
+install_live() {
+	mount_iso
+	install -d "$DATADIR/$KEYWORD" "$KERNELDIR/$KEYWORD"
+	cp "$ISOMNT/boot/x86_64/loader"/{linux,initrd} \
+		"$KERNELDIR/$KEYWORD"
+	umount_iso
+	cp "${ISO_FILEPATH}" "$DATADIR/$KEYWORD/"
+}
+
+entries=(entry)
