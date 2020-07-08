@@ -108,6 +108,8 @@ gen_grubcfg() {
 	fi
 	for entry in "${allentries[@]}"
 	do
+		unset INITRD # because it can be an array or just a string
+
 		source "$entry"
 		UUID="$UUID" ISOFILE="$ISOFILE" output_grub_entry
 	done
@@ -124,6 +126,8 @@ meta_gen_grubcfg() {
 	fi
 	for entry in "${entries[@]}"
 	do
+		unset INITRD # because it can be an array or just a string
+
 		"$entry"
 		UUID="$UUID" ISOFILE="$ISOFILE" output_grub_entry
 	done
@@ -139,6 +143,8 @@ meta_gen_syslinux() {
 	count=0
 	for entry in "${entries[@]}"
 	do
+		unset INITRD # because it can be an array or just a string
+
 		"$entry"
 		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="${name}_${count}" \
 			output_syslinux_entry
@@ -153,6 +159,8 @@ gen_syslinux() {
 	count=0
 	for entry in "${allentries[@]}"
 	do
+		unset INITRD # because it can be an array or just a string
+
 		source "$entry"
 		UUID="$UUID" ISOFILE="$ISOFILE" LABEL="${name}_${count}" \
 			output_syslinux_entry
