@@ -1,7 +1,7 @@
-_isodate=2020.08.01
+_isodate=2020.10.01
 ISONAME="$DISTRONAME $_isodate"
 ISOURL=iso/$_isodate/archlinux-$_isodate-x86_64.iso
-SHA1=50f6eeecd84aea8ea8cf3433fcc126eb396ed640
+SHA1=67c2603d194a004f7010f57c25faa5dcea04a05f
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/archlinux
