@@ -221,6 +221,7 @@ elif [ "$INSTALL_GRUB" == 1 ]; then
 			as-root grub-install --force --boot-directory="$BOOTPATH" --target=i386-pc "$DEVNAME"
 		fi
 		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=x86_64-efi --removable --no-nvram "$DEVNAME"
+		as-root grub-install --boot-directory="$BOOTPATH" --efi-directory="$BOOTPATH" --bootloader-id=grub --target=i386-efi --removable --no-nvram "$DEVNAME"
 	fi
 fi
 
