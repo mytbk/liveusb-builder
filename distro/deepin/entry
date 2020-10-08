@@ -2,5 +2,5 @@
 TITLE='Deepin installer x86_64'
 KERNEL=/liveusb-kernel/$KEYWORD/vmlinuz
 INITRD=(/liveusb-kernel/$KEYWORD/initrd.lz)
-OPTION="findiso=liveusb-data/$KEYWORD/$ISOFILE boot=live components quiet splash union=overlay livecd-installer"
+OPTION="root=UUID=$UUID fromiso=liveusb-data/$KEYWORD/$ISOFILE boot=live components quiet splash union=overlay livecd-installer"
 X64=y
