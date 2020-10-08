@@ -2,4 +2,4 @@ source distro/mx/isoinfo.common
 
 ISONAME="$DISTRONAME Linux $_isover x64"
 ISOURL="MX-${_isover}_x64.iso"
-SHA256=18e880f55d83abb19f042310f46a2738807ed8dd48c86e2ef0a5a083672e9e2d
+SHA256=7cf6d7dafe8200e7553f3548121eac077e87f891b5cdb939c0b677b9d7720e4c
