@@ -3,5 +3,5 @@ KERNEL=/liveusb-kernel/$KEYWORD/x86_64/vmlinuz-linux
 INITRD=(/liveusb-kernel/$KEYWORD/intel-ucode.img
 	/liveusb-kernel/$KEYWORD/amd-ucode.img
 	/liveusb-kernel/$KEYWORD/x86_64/initramfs-linux.img)
-OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/$KEYWORD"
+OPTION="img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/$KEYWORD/$ISOFILE"
 X64=y
