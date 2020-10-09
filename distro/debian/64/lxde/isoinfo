@@ -1,2 +1,3 @@
 _desktop=LXDE
+_arch=amd64
 source distro/debian/isoinfo.common

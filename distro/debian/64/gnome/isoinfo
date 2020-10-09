@@ -1,2 +1,3 @@
 _desktop=GNOME
+_arch=amd64
 source distro/debian/isoinfo.common

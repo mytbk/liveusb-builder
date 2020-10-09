@@ -1,3 +1,3 @@
-_desktop=KDE
-_arch=amd64
+_desktop=Cinnamon
+_arch=i386
 source distro/debian/isoinfo.common
