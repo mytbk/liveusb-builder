@@ -1,0 +1,10 @@
+_isover=20.04.1
+ISONAME="$DISTRONAME ${_isover} amd64"
+ISOURL="${_isover}/ubuntu-${_isover}-desktop-amd64.iso"
+SHA256=b45165ed3cd437b9ffad02a2aad22a4ddc69162470e2622982889ce5826f6e3d
+
+mirrorlist=(
+http://releases.ubuntu.com
+http://mirrors.ustc.edu.cn/ubuntu-releases
+https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases
+)
