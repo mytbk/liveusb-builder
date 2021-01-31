@@ -1,9 +1,0 @@
-_isodate=2018-01-25
-_desktop=mate
-ISONAME="$DISTRONAME $_desktop $_isodate"
-ISOURL=garch-$_desktop-$_isodate.iso
-SHA256=c57fcddb431f6f6b490256603596f4ce57057d4932c4b3c194abe8969f1e3289
-
-mirrorlist=(
-https://sourceforge.net/projects/garchiso/files
-)

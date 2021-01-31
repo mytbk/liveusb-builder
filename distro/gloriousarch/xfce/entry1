@@ -1,3 +1,0 @@
-. distro/arch/entry1
-TITLE='Glorious Arch x86_64 (Xfce)'
-OPTION="$OPTION iomem=relaxed"

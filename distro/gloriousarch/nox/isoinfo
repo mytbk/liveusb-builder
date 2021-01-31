@@ -1,9 +1,0 @@
-_isodate=2018-01-25
-_desktop=nox
-ISONAME="$DISTRONAME $_desktop $_isodate"
-ISOURL=garch-$_desktop-$_isodate.iso
-SHA256=d1f98302572e69866d1acd98784db749117bdb66700199a69bc9dcc4bc110cfa
-
-mirrorlist=(
-https://sourceforge.net/projects/garchiso/files
-)

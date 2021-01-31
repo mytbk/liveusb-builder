@@ -1,9 +1,0 @@
-_isodate=2019-03-02
-_desktop=xfce
-ISONAME="$DISTRONAME $_desktop $_isodate"
-ISOURL=garch-$_desktop-$_isodate.iso
-SHA256=1e004729ff964f4d45e86a6a91639e42040fee0cbf8533a99cb4233386257343
-
-mirrorlist=(
-https://sourceforge.net/projects/garchiso/files
-)
