@@ -21,7 +21,7 @@ You need these packages on your GNU/Linux system to use liveusb-builder.
 - udevil: for mounting iso files
 - wget: for downloading
 - syslinux (recommended): bootloader for legacy BIOS
-- GRUB: bootloader for leagacy BIOS if there's no syslinux, and bootloader for UEFI
+- GRUB: bootloader for legacy BIOS if there's no syslinux, and bootloader for UEFI
 
 For Arch Linux users, just install [liveusb-builder-git](https://aur.archlinux.org/packages/liveusb-builder-git/) from AUR.
 
@@ -124,6 +124,13 @@ At last, make the Live USB (we install Arch and Fedora 32 in it):
 ```
 $ ./buildlive --boot /media/boot --root /media/root arch fedora/32
 ```
+
+## Experimental features
+
+I've made some experimental features that are not yet merged to the main source tree.
+
+- [metaiso](https://github.com/mytbk/liveusb-builder/tree/metaiso): support using a custom iso file for a certain distro
+- [ia32efi-test](https://github.com/mytbk/liveusb-builder/commits/ia32efi-test): support IA32 EFI
 
 ## Status
 
