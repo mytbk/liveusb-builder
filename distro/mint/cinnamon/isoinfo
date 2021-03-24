@@ -1,3 +1,4 @@
+source distro/mint/cinnamon/config
 source distro/mint/isoinfo.common
-ISONAME="$DISTRONAME ${_isover} x86_64 (Cinnamon)"
-ISOURL=stable/${_isover}/linuxmint-${_isover}-cinnamon-64bit.iso
+ISONAME="$DISTRONAME ${_ver} x86_64 (${_de})"
+ISOURL=stable/${_ver}/linuxmint-${_ver}-cinnamon-64bit.iso

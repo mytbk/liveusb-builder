@@ -1,4 +1,2 @@
-_arch=x86_64
-_ver=20
-_de=Xfce
+source distro/mint/xfce/config
 source distro/mint/entry.common

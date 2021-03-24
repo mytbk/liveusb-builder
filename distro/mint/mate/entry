@@ -1,4 +1,2 @@
-_arch=x86_64
-_ver=20
-_de=MATE
+source distro/mint/mate/config
 source distro/mint/entry.common

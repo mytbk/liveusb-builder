@@ -1,5 +1,3 @@
-_isover=20
-
 HASHTOOL=sha256sum
 HASHFILE=distro/mint/sha256sum.txt
 VERIFY=hashfile

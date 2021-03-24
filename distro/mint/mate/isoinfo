@@ -1,3 +1,4 @@
+source distro/mint/mate/config
 source distro/mint/isoinfo.common
-ISONAME="$DISTRONAME ${_isover} x86_64 (MATE)"
-ISOURL=stable/${_isover}/linuxmint-${_isover}-mate-64bit.iso
+ISONAME="$DISTRONAME ${_ver} x86_64 (${_de})"
+ISOURL=stable/${_ver}/linuxmint-${_ver}-mate-64bit.iso

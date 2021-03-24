@@ -1,4 +1,2 @@
-_arch=x86_64
-_ver=20
-_de=Cinnamon
+source distro/mint/cinnamon/config
 source distro/mint/entry.common

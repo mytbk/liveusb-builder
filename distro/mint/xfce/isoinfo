@@ -1,3 +1,4 @@
+source distro/mint/xfce/config
 source distro/mint/isoinfo.common
-ISONAME="$DISTRONAME ${_isover} x86_64 (Xfce)"
-ISOURL=stable/${_isover}/linuxmint-${_isover}-xfce-64bit.iso
+ISONAME="$DISTRONAME ${_ver} x86_64 (${_de})"
+ISOURL=stable/${_ver}/linuxmint-${_ver}-xfce-64bit.iso
