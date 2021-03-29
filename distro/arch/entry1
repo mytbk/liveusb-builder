@@ -1,7 +1,7 @@
 TITLE='Arch Linux x86_64'
-KERNEL=/liveusb-kernel/$KEYWORD/x86_64/vmlinuz-linux
-INITRD=(/liveusb-kernel/$KEYWORD/intel-ucode.img
-	/liveusb-kernel/$KEYWORD/amd-ucode.img
-	/liveusb-kernel/$KEYWORD/x86_64/initramfs-linux.img)
+prefix="/liveusb-kernel/$KEYWORD/arch/boot"
+KERNEL="$prefix/x86_64/vmlinuz-linux"
+INITRD=("$prefix/intel-ucode.img" "$prefix/amd-ucode.img"
+	"$prefix/x86_64/initramfs-linux.img")
 OPTION="img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/$KEYWORD/$ISOFILE"
 X64=y
