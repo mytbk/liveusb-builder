@@ -135,6 +135,20 @@ umount_iso() {
 	udevil umount "$ISOMNT"
 }
 
+# iso_extract: extract files from iso image to destination path
+# usage: iso_extract <isofile> <patterns> <dest>
+iso_extract() {
+	local isofile="$1"
+	local patterns=()
+	shift
+	while [ "$#" -gt 1 ]; do
+		patterns+=("$1")
+		shift
+	done
+	local dest="$1"
+	bsdtar -x -f "$isofile" -C "$dest" "${patterns[@]}"
+}
+
 getuuid() {
 	lsblk -n -o UUID "$1"
 }
