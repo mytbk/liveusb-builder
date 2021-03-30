@@ -1,20 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# TODO: detect kernel, initramfs, and ucode filenames
+
 entry() {
 	TITLE="$ISONAME"
-	KERNEL=/liveusb-kernel/$KEYWORD/x86_64/vmlinuz
-	INITRD=(/liveusb-kernel/$KEYWORD/intel_ucode.img
-		/liveusb-kernel/$KEYWORD/amd_ucode.img
-		/liveusb-kernel/$KEYWORD/x86_64/archiso.img)
-	OPTION="archisodevice=/dev/disk/by-uuid/$UUID archisobasedir=liveusb-data/$KEYWORD"
+	prefix="/liveusb-kernel/$KEYWORD/arch/boot"
+	KERNEL="$prefix/x86_64/vmlinuz-linux"
+	INITRD=("$prefix/intel-ucode.img" "$prefix/amd-ucode.img"
+		"$prefix/x86_64/initramfs-linux.img")
+	OPTION="img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/$KEYWORD/$ISONAME"
 	X64=y
 }
 
 install_live() {
-	mount_iso
 	install -d "$DATADIR/$KEYWORD" "$KERNELDIR/$KEYWORD"
-	cp -r "$ISOMNT/arch/x86_64" "$DATADIR/$KEYWORD/"
-	cp -r "$ISOMNT/arch/boot/x86_64" "$KERNELDIR/$KEYWORD/"
-	cp "$ISOMNT/arch/boot/"*.img "$KERNELDIR/$KEYWORD/"
-	umount_iso
+	iso_extract "${ISO_FILEPATH}" arch/boot/x86_64 'arch/boot/*.img' "$KERNELDIR/$KEYWORD/"
+	cp "${ISO_FILEPATH}" "$DATADIR/$KEYWORD/"
 }
 
 entries=(entry)
