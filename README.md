@@ -130,7 +130,6 @@ $ ./buildlive --boot /media/boot --root /media/root arch fedora/32
 
 I've made some experimental features that are not yet merged to the main source tree.
 
-- [metaiso](https://github.com/mytbk/liveusb-builder/tree/metaiso): support using a custom iso file for a certain distro
 - [ia32efi-test](https://github.com/mytbk/liveusb-builder/commits/ia32efi-test): support IA32 EFI
 
 ## Status
