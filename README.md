@@ -137,6 +137,8 @@ I've made some experimental features that are not yet merged to the main source 
 
 The resulting USB stick works on QEMU with PC BIOS (SeaBIOS), UEFI (OVMF), libreboot (i440fx, GRUB txtmode) as firmware.
 
+The script ``testusb.sh`` can be used to test a USB stick with QEMU.
+
 ## Related work
 
 You can search keyword ``multiboot`` on GitHub and find some related projects. Listed below is some related work I know or find.
