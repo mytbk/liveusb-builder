@@ -42,11 +42,19 @@ I've already used this method to successfully install Windows 7, OpenBSD 6.7, an
 
 ## Usage
 
+First, you need to have a partitioned USB drive. For the best legacy BIOS compatibility, it's recommended to use MSDOS (MBR) partition table. Because most UEFI firmware only supports FAT32 partitions, you need a FAT32 partition on the USB drive, and put the boot files into this partition.
+
 ### The easier way: one FAT32 partition
 
-First mount your USB drive partition. I recommend using udevil so that you can write files without as root.
+Suppose your USB stick device is /dev/sdb and the partition on the device is /dev/sdb1.
 
-Then run buildlive script as follows, suppose your USB is /dev/sdb and /dev/sdb1 is mount to /media/sdb1:
+```bash
+# install Arch, Mint (x86_64 with MATE Desktop) and Fedora 32 to USB
+./buildlive --root=/dev/sdb1 arch mint/mate fedora/32
+```
+
+The other way is to mount your USB drive partition first. I recommend using udevil so that you can write files without as root.
+Then run buildlive script as follows, suppose /dev/sdb1 is mount to /media/sdb1:
 
 ```bash
 # install Arch, Mint (x86_64 with MATE Desktop) and Fedora 32 to USB
