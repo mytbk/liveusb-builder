@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# TODO: detect kernel, initramfs, and ucode filenames
+
+entry() {
+	TITLE="$ISONAME"
+	prefix="/liveusb-kernel/$KEYWORD/arch/boot"
+	KERNEL="$prefix/x86_64/vmlinuz-linux"
+	INITRD=("$prefix/intel-ucode.img" "$prefix/amd-ucode.img"
+		"$prefix/x86_64/initramfs-linux.img")
+	OPTION="img_dev=/dev/disk/by-uuid/$UUID img_loop=liveusb-data/$KEYWORD/$ISONAME"
+	X64=y
+}
+
+install_live() {
+	install -d "$DATADIR/$KEYWORD" "$KERNELDIR/$KEYWORD"
+	iso_extract "${ISO_FILEPATH}" arch/boot/x86_64 'arch/boot/*.img' "$KERNELDIR/$KEYWORD/"
+	cp "${ISO_FILEPATH}" "$DATADIR/$KEYWORD/"
+}
+
+entries=(entry)

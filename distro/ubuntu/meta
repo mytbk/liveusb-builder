@@ -1,0 +1,36 @@
+entry() {
+	if test -z "${ubt_kernel}" -o -z "${ubt_initrd}"
+	then
+		msg "warn: kernel image or initramfs not found."
+		msg "      the Ubuntu based entry may not work."
+	fi
+	isofn="$(basename "$ISOFILE")"
+	TITLE="$ISONAME"
+	KERNEL="/liveusb-kernel/${KEYWORD}/${ubt_kernel}"
+	INITRD="/liveusb-kernel/${KEYWORD}/${ubt_initrd}"
+	OPTION="file=/cdrom/preseed/ubuntu.seed boot=casper iso-scan/filename=/liveusb-data/${KEYWORD}/${isofn}"
+	X64=y
+}
+
+install_live() {
+	install -d "$KERNELDIR/${KEYWORD}" "$DATADIR/${KEYWORD}"
+	mount_iso
+	ubt_kernel=($(find "$ISOMNT/casper/" -maxdepth 1 -name 'vmlinuz*'))
+	if [ "${#ubt_kernel[@]}" != 1 ]; then
+		fatalerror "panic: more than one kernel image found."
+	else
+		ubt_kernel="$(basename ${ubt_kernel[0]})"
+	fi
+	ubt_initrd=($(find "$ISOMNT/casper/" -maxdepth 1 -name 'initrd*'))
+	if [ "${#ubt_initrd[@]}" != 1 ]; then
+		fatalerror "panic: more than one initramfs image found."
+	else
+		ubt_initrd="$(basename ${ubt_initrd[0]})"
+	fi
+	cp "$ISOMNT/casper/${ubt_kernel}" "$ISOMNT/casper/${ubt_initrd}" \
+		"$KERNELDIR/${KEYWORD}/"
+	umount_iso
+	cp "$ISOFILE" "$DATADIR/${KEYWORD}/"
+}
+
+entries=(entry)

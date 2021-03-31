@@ -31,7 +31,7 @@ fatalerror() {
 
 usage() {
 	>&2 cat << EOF
-$0 [--root <path>] [options] [distro 1] [distro 2] ...
+$0 [--root <path>] [options] [--distro=<metadist> <isofile>] [distro] ...
 use $0 -L to list available distros
 options:
   --root <path>
@@ -102,6 +102,20 @@ do
 			;;
 		--clean)
 			CLEAN_USB=1
+			;;
+		--distro=*)
+			metadist="${1/--distro=}"
+			if [ ! -f "distro/$metadist/meta" ]
+			then
+				fatalerror "distro/$metadist/meta not found"
+			fi
+			shift
+			isofn="$1"
+			if [ ! -f "$isofn" ]
+			then
+				fatalerror "File $isofn not found"
+			fi
+			DISTROLIST=(${DISTROLIST[@]} "/meta@$metadist@$isofn")
 			;;
 		*=*|-*)
 			usage
@@ -174,6 +188,17 @@ fi
 
 for i in ${DISTROLIST[@]}
 do
+	if [[ "$i" == /meta@* ]]
+	then
+		# FIXME: we assume the meta file path and the iso file name
+		#	 does not have '@' character
+		ISOFILE="$(echo "$i" | cut -d@ -f3)"
+		ISOLIST=("${ISOLIST[@]}" "$ISOFILE")
+		# TODO: we just use the file name as the ISO name
+		# 	can we do it better?
+		ISONAMELIST=("${ISONAMELIST[@]}" "$(basename "$ISOFILE")")
+		continue
+	fi
 	process_isoinfo "$i"
 	ISOLIST=("${ISOLIST[@]}" "$ISOFILE")
 	ISONAMELIST=("${ISONAMELIST[@]}" "$ISONAME")
@@ -199,16 +224,28 @@ do
 	DISTRO="${DISTROLIST[$i-1]}"
 	ISO_FILEPATH="$ISOPATH/$ISOFILE"
 
-	set_distro "$DISTRO"
-	export DISTRONAME KEYWORD # for grub and syslinux generation
-
-	process_distro "$DISTRO"
+	if [[ "$DISTRO" == /meta@* ]]
+	then
+		metadir="$(echo "$DISTRO" | cut -d@ -f2)"
+		_meta=meta_
+		ISO_FILEPATH="$ISOFILE"
+		DISTRO="$metadir"
+		set_distro "$metadir"
+		KEYWORD="$ISONAME"
+		source "distro/$metadir/meta"
+	else
+		_meta=
+		ISO_FILEPATH="$ISOPATH/$ISOFILE"
+		set_distro "$DISTRO"
+		export DISTRONAME KEYWORD # for grub and syslinux generation
+		process_distro "$DISTRO"
+	fi
 
 	if [ "$GRUBCFG_ONLY" == 0 ]; then
 		install_live
 	fi
-	gen_grubcfg "$DISTRO" >> "$GRUBCFG"
-	gen_syslinux "$DISTRO" >> "$SYSLINUXCFG"
+	${_meta}gen_grubcfg "$DISTRO" >> "$GRUBCFG"
+	${_meta}gen_syslinux "$DISTRO" >> "$SYSLINUXCFG"
 done
 
 if [ "$GRUBCFG_ONLY" == 1 ]; then
