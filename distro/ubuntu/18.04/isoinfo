@@ -1,7 +1,8 @@
-_isover=18.04.3
-ISONAME="$DISTRONAME ${_isover} amd64"
-ISOURL="${_isover}/ubuntu-${_isover}-desktop-amd64.iso"
-SHA256=add4614b6fe3bb8e7dddcaab0ea97c476fbd4ffe288f2a4912cb06f1a47dcfa0
+source distro/ubuntu/18.04/config
+
+ISONAME="$DISTRONAME ${_ver} amd64"
+ISOURL="${_ver}/ubuntu-${_ver}-desktop-amd64.iso"
+SHA256=f295570badb09a606d97ddfc3421d7bf210b4a81c07ba81e9c040eda6ddea6a0
 
 mirrorlist=(
 https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases

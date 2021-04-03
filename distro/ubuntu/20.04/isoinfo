@@ -1,7 +1,8 @@
-_isover=20.04.1
-ISONAME="$DISTRONAME ${_isover} amd64"
-ISOURL="${_isover}/ubuntu-${_isover}-desktop-amd64.iso"
-SHA256=b45165ed3cd437b9ffad02a2aad22a4ddc69162470e2622982889ce5826f6e3d
+source distro/ubuntu/20.04/config
+
+ISONAME="$DISTRONAME ${_ver} amd64"
+ISOURL="${_ver}/ubuntu-${_ver}-desktop-amd64.iso"
+SHA256=93bdab204067321ff131f560879db46bee3b994bf24836bb78538640f689e58f
 
 mirrorlist=(
 http://releases.ubuntu.com
