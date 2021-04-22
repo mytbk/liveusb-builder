@@ -1,4 +1,4 @@
-_isover=10.6.0
+_isover=10.10.0
 
 ISONAME="$DISTRONAME ${_isover} ${_arch} ${_desktop}"
 ISOURL="${_isover}-live/${_arch}/iso-hybrid/debian-live-${_isover}-${_arch}-${_desktop,,}.iso"
