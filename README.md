@@ -19,7 +19,8 @@ A presentation in Chinese is at https://wehack.space/vimacs/liveusb-builder.odp.
 You need these packages on your GNU/Linux system to use liveusb-builder.
 
 - libarchive: for ISO image extraction
-- udevil: for mounting USB disk partitions
+- udisks2 (optional,recommended): for mounting USB disk partitions without being root
+- udevil (optional): for mounting USB disk partitions and ISO images without being root
 - wget: for downloading
 - syslinux (recommended): bootloader for legacy BIOS
 - GRUB: bootloader for legacy BIOS if there's no syslinux, and bootloader for UEFI
