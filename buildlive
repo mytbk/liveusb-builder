@@ -20,15 +20,6 @@ CLEAN_USB=0
 
 . functions.sh
 
-msg() {
-	echo -e "$1" >&2
-}
-
-fatalerror() {
-	msg "\x1b[1;31m$1\x1b[0m"
-	exit 1
-}
-
 usage() {
 	>&2 cat << EOF
 $0 [--root <path>] [options] [--distro=<metadist> <isofile>] [distro] ...
@@ -52,7 +43,7 @@ try_mount() {
 	then
 		if ! findmnt "$1" > /dev/null
 		then
-			udevil mount "$1" > /dev/null
+			mount_block "$1" > /dev/null
 			mnt=$(findmnt -n -o TARGET "$1")
 		else
 			mnt=$(findmnt -n -o TARGET "$1")
@@ -62,6 +53,9 @@ try_mount() {
 	fi
 	echo "$mnt"
 }
+
+detect_block_mount_tool 2>/dev/null
+detect_iso_mount_tool 2>/dev/null
 
 unset ISOPATH
 CFGFILE="$HOME/.liveusb-builder"
@@ -263,9 +257,9 @@ fi
 
 if [ "$UMOUNT_BOOT" == 1 ]; then
 	msg 'Trying to umount the boot mountpoint, you may need to wait for sync() to complete.'
-	udevil umount "$BOOTPATH"
+	unmount_block "$BOOTPATH"
 fi
 if [ "$UMOUNT_ROOT" == 1 -a "$ROOTPATH" != "$BOOTPATH" ]; then
 	msg 'Trying to umount the root mountpoint, you may need to wait for sync() to complete.'
-	udevil umount "$ROOTPATH"
+	unmount_block "$ROOTPATH"
 fi

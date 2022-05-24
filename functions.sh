@@ -1,6 +1,26 @@
 # Copyright (C)  2016-2018 Iru Cai <mytbk920423@gmail.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+msg() {
+	echo -e "$1" >&2
+}
+
+fatalerror() {
+	msg "\x1b[1;31m$1\x1b[0m"
+	exit 1
+}
+
+as-root() {
+	echo as-root "$*"
+	if [ "$UID" == 0 ]; then
+		"$@"
+	elif type -p sudo > /dev/null; then
+		sudo "$@"
+	elif type -p su > /dev/null; then
+		su -c "$*"
+	fi
+}
+
 checksum_verify() {
 	local _hashtool _hashsum _cksum
 	if [ -n "$SHA512" ]; then
@@ -194,6 +214,69 @@ get_iso_label() {
 	file -b "$1" | cut -d\' -f2
 }
 
+# We try to a proper mount tool to mount block devices and iso files,
+# if we cannot find it, use the system mount tool.
+# Both udisks2 and udevil can mount block devices, but only udevil
+# can mount iso files.
+detect_block_mount_tool() {
+       if (udisksctl status | grep DEVICE > /dev/null); then
+               BLOCKMOUNT=udisks2
+       elif (udevil | grep 'udevil version' > /dev/null); then
+               BLOCKMOUNT=udevil
+       else
+	       BLOCKMOUNT=system
+       fi
+}
+
+detect_iso_mount_tool() {
+       if (udevil | grep 'udevil version' > /dev/null); then
+               ISOMOUNT=udevil
+       else
+	       ISOMOUNT=system
+       fi
+}
+
+udevil_mount() {
+	udevil mount "$1"
+}
+
+udevil_unmount() {
+	udevil umount "$1"
+}
+
+udisks2_mount() {
+	udisksctl mount -b "$1"
+}
+
+udisks2_unmount() {
+	local mnt_source
+	mnt_source="$(findmnt -n -o SOURCE "$1")"
+	udisksctl unmount -b "${mnt_source}"
+}
+
+system_mount() {
+	local mountpoint
+	local uid
+	mountpoint="$(mktemp -d)"
+	uid="$(id -u)"
+	# first try uid= option of mount(1)
+	if ! as-root mount -o "uid=$uid" "$1" "$mountpoint" 2> /dev/null; then
+		as-root mount "$1" "$mountpoint"
+	fi
+}
+
+system_unmount() {
+	as-root umount "$1"
+}
+
+mount_block() {
+	${BLOCKMOUNT}_mount "$1"
+}
+
+unmount_block() {
+	${BLOCKMOUNT}_unmount "$1"
+}
+
 mount_iso() {
 	LOOPDEV=$(/sbin/losetup -n -O NAME -j "${ISO_FILEPATH}")
 	if [[ -n "$LOOPDEV" ]]
@@ -202,7 +285,7 @@ mount_iso() {
 		umount_iso
 	fi
 
-	udevil mount "${ISO_FILEPATH}"
+	${ISOMOUNT}_mount "${ISO_FILEPATH}"
 	LOOPDEV=$(/sbin/losetup -n -O NAME -j "${ISO_FILEPATH}")
 	if [[ -n "$LOOPDEV" ]]
 	then
@@ -211,7 +294,7 @@ mount_iso() {
 }
 
 umount_iso() {
-	udevil umount "$ISOMNT"
+	${ISOMOUNT}_unmount "$ISOMNT"
 }
 
 # iso_extract: extract files from iso image to destination path
@@ -245,17 +328,6 @@ getdiskbypart() {
 			echo $i
 		fi
 	done
-}
-
-as-root() {
-	echo as-root "$*"
-	if [ "$UID" == 0 ]; then
-		"$@"
-	elif type -p sudo > /dev/null; then
-		sudo "$@"
-	elif type -p su > /dev/null; then
-		su -c "$*"
-	fi
 }
 
 syslinux_header() {
