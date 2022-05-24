@@ -1,0 +1,11 @@
+source distro/ubuntu/22.04/config
+
+ISONAME="$DISTRONAME ${_ver} amd64"
+ISOURL="${_ver}/ubuntu-${_ver}-desktop-amd64.iso"
+SHA256=b85286d9855f549ed9895763519f6a295a7698fb9c5c5345811b3eefadfb6f07
+
+mirrorlist=(
+http://releases.ubuntu.com
+http://mirrors.ustc.edu.cn/ubuntu-releases
+https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases
+)
