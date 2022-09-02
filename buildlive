@@ -17,6 +17,7 @@ DOWNLOAD_ONLY=0
 UMOUNT_BOOT=0
 UMOUNT_ROOT=0
 CLEAN_USB=0
+BOOTLOADER_ONLY=0
 
 . functions.sh
 
@@ -30,6 +31,7 @@ options:
   --boot <path>
   --boot=<path>: set the path to put the kernel and loader files
   --clean: clean the old live USB files before installing
+  --bootloader-only: only install the boot loader
   --no-grub: do not install GRUB loader (still generate grub.cfg)
   --grubcfg: do not do real install, only generate grub.cfg file
   --downloadonly: only download the ISO files
@@ -84,6 +86,9 @@ do
 			;;
 		--dev=*)
 			DEVNAME=${1/--dev=}
+			;;
+		--bootloader-only)
+			BOOTLOADER_ONLY=1
 			;;
 		--no-grub)
 			INSTALL_GRUB=0
@@ -166,7 +171,7 @@ if [[ "$DOWNLOAD_ONLY" == 0 ]]; then
 	msg "Files will be copy to $ROOTPATH"
 fi
 
-if [[ "${#DISTROLIST[@]}" == 0 ]]; then
+if [[ "$BOOTLOADER_ONLY" == 0 && "${#DISTROLIST[@]}" == 0 ]]; then
 	usage
 	exit 1
 fi
