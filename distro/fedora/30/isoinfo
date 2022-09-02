@@ -1,8 +1,0 @@
-ISONAME="$DISTRONAME 30 Workstation"
-ISOURL=releases/30/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-30-1.2.iso
-SHA256=a4e2c49368860887f1cc1166b0613232d4d5de6b46f29c9756bc7cfd5e13f39f
-
-mirrorlist=(
-https://mirrors.tuna.tsinghua.edu.cn/fedora
-http://mirrors.ustc.edu.cn/fedora/linux
-)
