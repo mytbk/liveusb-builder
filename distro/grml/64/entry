@@ -1,4 +1,4 @@
-ver=2020.06
+ver=2022.11
 TITLE="Grml $ver 64-bit full"
 KERNEL=/liveusb-kernel/grml/64/vmlinuz
 INITRD=/liveusb-kernel/grml/64/initrd.img
